@@ -12,7 +12,7 @@ Renders a menu for the given menu ID.
 
 {{- with index site.Menus $menuID }}
 
-  <nav class="navbar bg-dark navbar-expand-lg border rounded">
+  <nav class="navbar navbar-dark bg-primary navbar-expand-lg border rounded mt-3">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -22,6 +22,7 @@ Renders a menu for the given menu ID.
           {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
         </ul>
       </div>
+      <div><button class="btn shadow" id="theme">Theme</button></div>
     </div>
   </nav>
 {{- end }}
@@ -58,4 +59,3 @@ Renders a menu for the given menu ID.
     </li>
   {{- end }}
 {{- end }}
-

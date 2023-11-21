@@ -1,23 +1,10 @@
-{{ define "main" }}
-{{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-{{ $dateHuman := .Date | time.Format ":date_long" }}
+{{ define "main" }} {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }} {{ $dateHuman := .Date |
+time.Format ":date_long" }}
 
-<div class="card">
-  <div class="card-header">
-    <h1 class="card-title">{{ .Title }}</h1>
-    <h6 class="card-subtitle mb-2 text-body-secondary">
-      <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
-    </h6>
-  </div>
-
-  <div class="card-body">
-    <p class="card-text">
-      {{ .Content }}
-    </p>
-  </div>
-  <div class="card-footer">
-    {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
-  </div>
-  
-</div>
+<h1 class="">{{ .Title }}</h1>
+<h6 class="">
+  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+</h6>
+<div class="">{{ .Content }}</div>
+<div class="">{{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}</div>
 {{ end }}

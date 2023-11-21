@@ -1,14 +1,27 @@
-{{- with resources.Get "js/main.js" }}
-  {{- if eq hugo.Environment "development" }}
-    {{- with . | js.Build }}
-      <script src="{{ .RelPermalink }}"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    {{- end }}
-  {{- else }}
-    {{- $opts := dict "minify" true }}
-    {{- with . | js.Build $opts | fingerprint }}
-      <script src="{{ .RelPermalink }}" integrity="{{- .Data.Integrity }}" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    {{- end }}
-  {{- end }}
+{{- $opts := dict "minify" true }}
+<!-- CSS DEV -->
+{{ $customDev := resources.Get "js/custom.js" | js.Build }}
+<!-- BOOTSTRAP DEV -->
+{{ $bootstrapDev := resources.Get "js/bootstrap.bundle.js" | js.Build }}
+<!-- CSS PROD -->
+{{ $customProd := resources.Get "js/custom.js" | js.Build $opts | fingerprint }}
+<!-- BOOTSTRAP PROD -->
+{{ $bootstrapProd := resources.Get "js/bootstrap.bundle.js" | js.Build $opts | fingerprint }}
+
+<!--  -->
+
+{{- if eq hugo.Environment "development" }}
+<script src="{{ $customDev.RelPermalink }}"></script>
+<script src="{{ $bootstrapDev.RelPermalink }}"></script>
+{{- else }}
+<script
+  src="{{ $customProd.RelPermalink }}"
+  integrity="{{- $customProd.Data.Integrity }}"
+  crossorigin="anonymous"
+></script>
+<script
+  src="{{ $bootstrapProd.RelPermalink }}"
+  integrity="{{- $bootstrapProd.Data.Integrity }}"
+  crossorigin="anonymous"
+></script>
 {{- end }}

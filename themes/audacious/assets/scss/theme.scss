@@ -1,0 +1,17 @@
+// change default bootstrap theme colors
+
+// Required
+@import "../../node_modules/bootstrap/scss/functions";
+
+$theme-colors: (
+  "light": #dcdad3,
+  "dark": #0b1112,
+  "primary": #1c6b45,
+  "secondary": #6698d9,
+  "info": #507f47,
+  "success": #12aa63,
+  "warning": #e4cd11,
+  "danger": #f31d07,
+);
+
+@import "../../node_modules/bootstrap/scss/bootstrap";

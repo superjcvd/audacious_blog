@@ -5,10 +5,11 @@ draft = false
 tags = ['cheatsheet', 'dns']
 +++
 
+Useful DNS command lones examples
+
+<!--more-->
+
 ## dig command line
-
-dig examples
-
 
 `dig www.example.com`
 
