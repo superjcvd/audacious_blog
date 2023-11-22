@@ -134,3 +134,7 @@ dist
 .DS_Store
 .AppleDouble
 .LSOverride
+
+
+# Yarn add bootstrap
+themes/audacious/assets/imports/
