@@ -1,27 +1,27 @@
 {{- $opts := dict "minify" true }}
-<!-- CSS DEV -->
-{{ $customDev := resources.Get "js/custom.js" | js.Build }}
-<!-- BOOTSTRAP DEV -->
-{{ $bootstrapDev := resources.Get "js/bootstrap.bundle.js" | js.Build }}
-<!-- CSS PROD -->
-{{ $customProd := resources.Get "js/custom.js" | js.Build $opts | fingerprint }}
-<!-- BOOTSTRAP PROD -->
-{{ $bootstrapProd := resources.Get "js/bootstrap.bundle.js" | js.Build $opts | fingerprint }}
 
-<!--  -->
+<!-- DEV -->
+{{ $theme_dev := resources.Get "js/theme.js" | js.Build }}
+{{ $bootstrap_dev := resources.Get "imports/bootstrap/dist/js/bootstrap.bundle.js" | js.Build }}
+
+<!-- PROD -->
+{{ $theme_prod := resources.Get "js/theme.js" | js.Build $opts | fingerprint }}
+{{ $bootstrap_prod := resources.Get "imports/bootstrap/dist/js/bootstrap.bundle.js" | js.Build $opts | fingerprint }}
+
+
+{{ $js_dev := slice $theme_dev $bootstrap_dev }} 
+{{ $js_prod := slice $theme_prod $bootstrap_prod }}
 
 {{- if eq hugo.Environment "development" }}
-<script src="{{ $customDev.RelPermalink }}"></script>
-<script src="{{ $bootstrapDev.RelPermalink }}"></script>
+  {{ range $js_dev }}
+  <script src="{{ .RelPermalink }}"></script>
+  {{ end }}
 {{- else }}
-<script
-  src="{{ $customProd.RelPermalink }}"
-  integrity="{{- $customProd.Data.Integrity }}"
-  crossorigin="anonymous"
-></script>
-<script
-  src="{{ $bootstrapProd.RelPermalink }}"
-  integrity="{{- $bootstrapProd.Data.Integrity }}"
-  crossorigin="anonymous"
-></script>
+  {{ range $js_prod }}
+  <script
+    src="{{ .RelPermalink }}"
+    integrity="{{- .Data.Integrity }}"
+    crossorigin="anonymous"
+  ></script>
+  {{ end }}
 {{- end }}

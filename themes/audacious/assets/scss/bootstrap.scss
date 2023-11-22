@@ -1,7 +1,7 @@
 // change default bootstrap theme colors
 
 // Required
-@import "../../node_modules/bootstrap/scss/functions";
+@import "../imports/bootstrap/scss/functions";
 
 $theme-colors: (
   "light": #dcdad3,
@@ -12,6 +12,7 @@ $theme-colors: (
   "success": #12aa63,
   "warning": #e4cd11,
   "danger": #f31d07,
+  "content": #49886a,
 );
 
-@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../imports/bootstrap/scss/bootstrap";

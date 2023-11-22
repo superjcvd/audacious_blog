@@ -1,28 +1,16 @@
-<!-- CSS DEV -->
-{{ $customDev := resources.Get "css/custom.css" }}
 <!-- SCSS DEV -->
-{{ $scssDev := resources.Get "scss/theme.scss" | toCSS}}
-<!-- CSS PROD -->
-{{ $customProd := resources.Get "css/custom.css" | minify | fingerprint }}
+{{ $bootsrap_dev := resources.Get "scss/bootstrap.scss" | toCSS}}
 <!-- SCSS PROD -->
-{{ $scssProd := resources.Get "scss/theme.scss" | toCSS | minify | fingerprint}}
+{{ $bootsrap_prod := resources.Get "scss/bootstrap.scss" | toCSS | minify | fingerprint}}
 
-<!-- -->
 
 {{- if eq hugo.Environment "development" }}
-<link rel="stylesheet" href="{{ $customDev.RelPermalink }}" />
-<link rel="stylesheet" href="{{ $scssDev.RelPermalink }}" />
+  <link rel="stylesheet" href="{{ $bootsrap_dev.RelPermalink }}" />
 {{- else }}
-<link
-  rel="stylesheet"
-  href="{{ $customProd.RelPermalink }}"
-  integrity="{{ $customProd.Data.Integrity }}"
-  crossorigin="anonymous"
-/>
-<link
-  rel="stylesheet"
-  href="{{ $scssProd.RelPermalink }}"
-  integrity="{{ $scssProd.Data.Integrity }}"
-  crossorigin="anonymous"
-/>
+  <link
+    rel="stylesheet"
+    href="{{ $bootsrap_prod.RelPermalink }}"
+    integrity="{{ $bootsrap_prod.Data.Integrity }}"
+    crossorigin="anonymous"
+  />
 {{- end }}
