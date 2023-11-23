@@ -1,0 +1,41 @@
+{{ define "main" }}
+
+{{- $name := .Site.Data.resume.data.Name }}
+{{- $title := .Site.Data.resume.data.Title }}
+{{- $info := .Site.Data.resume.data.Info }}
+{{- $profile := .Site.Data.resume.data.Profile }}
+{{- $skills := .Site.Data.resume.data.Skills }}
+{{- $experience := .Site.Data.resume.data.Experience }}
+{{- $education := .Site.Data.resume.data.Education }}
+{{- $languages := .Site.Data.resume.data.Languages }}
+{{- $interests := .Site.Data.resume.data.Interests }}
+
+<div class="row">
+  <div class="col-8">
+    <h1>{{ $name }}</h1>
+    <h2>{{ $title }}</h1>
+    <h3 class="pt-4">Profile</h3><div class="border-top pb-2"></div>
+    <div>{{ $profile }}</div>
+
+    <h3 class="pt-4">Experience</h3><div class="border-top pb-2"></div>
+    <div>{{ $experience }}</div>
+
+    <h3 class="pt-4">Education</h3><div class="border-top pb-2"></div>
+    <div>{{ $education }}</div>
+
+    <h3 class="pt-4">Interests</h3><div class="border-top pb-2"></div>
+    <div>{{ $interests }}</div>
+
+    
+  </div>
+
+  <div class="col-4">
+    <div>{{ $info }}</div>
+    <div>{{ $skills }}</div>
+  </div>
+
+
+
+
+
+{{ end }}
