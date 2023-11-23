@@ -15,7 +15,7 @@ For a given taxonomy, renders a list of terms assigned to the page.
   <div>
     <span>{{ $label }}:</span>
       {{- range . }}
-      <a href="{{ .RelPermalink }}" class="btn btn-secondary btn-sm" style="--bs-btn-padding-y: .10rem; --bs-btn-padding-x: .3rem; --bs-btn-font-size: .75rem;">{{ .LinkTitle }}</a>
+      <a href="{{ .RelPermalink }}" class="btn btn-tags btn-sm" style="--bs-btn-padding-y: .10rem; --bs-btn-padding-x: .3rem; --bs-btn-font-size: .75rem;">{{ .LinkTitle }}</a>
       {{- end }}
 
   </div>

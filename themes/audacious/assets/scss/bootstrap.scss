@@ -4,15 +4,16 @@
 @import "../imports/bootstrap/scss/functions";
 
 $theme-colors: (
-  "light": #dcdad3,
+  "light": #fffefc,
   "dark": #0b1112,
-  "primary": #1c6b45,
-  "secondary": #6698d9,
-  "info": #507f47,
-  "success": #12aa63,
-  "warning": #e4cd11,
-  "danger": #f31d07,
+  "primary": #5824c0,
+  "secondary": #a966d9,
+  "info": #4a95ae,
+  "success": #256b4a,
+  "warning": #ecd948,
+  "danger": #c34638,
   "content": #49886a,
+  "tags": #7044c9,
 );
 
 @import "../imports/bootstrap/scss/bootstrap";

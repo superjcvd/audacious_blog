@@ -8,12 +8,10 @@
     {{ partial "head.html" . }}
   </head>
   <body>
-    <!-- <div class="darken-100">coucou</div> -->
     <div class="container">
       <header>{{ partial "header.html" . }}</header>
-      <main class="my-3 p-3 border rounded">{{ block "main" . }}{{ end }}</main>
+      <main class="my-3 p-3 rounded">{{ block "main" . }}{{ end }}</main>
       <footer>{{ partial "footer.html" . }}</footer>
     </div>
   </body>
 </html>
-<!-- style="background-color: $indigo-200" -->

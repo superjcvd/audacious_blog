@@ -5,7 +5,7 @@ draft = false
 tags = ['cheatsheet', 'dns']
 +++
 
-Useful DNS command lones examples
+...
 
 <!--more-->
 
@@ -25,48 +25,20 @@ dig www.example.com @dns_server
 
 ```shell
 # example
-dig www.example.com
-dig a www.example.com
-dig txt www.example.com
-dig www.example.com @dns_server
+........
 ```
 
 ```shell
 # example
-dig www.example.com
-dig a www.example.com
-dig txt www.example.com
-dig www.example.com @dns_server
+........
 ```
 
 ```shell
 # example
-dig www.example.com
-dig a www.example.com
-dig txt www.example.com
-dig www.example.com @dns_server
+........
 ```
 
 ```shell
 # example
-dig www.example.com
-dig a www.example.com
-dig txt www.example.com
-dig www.example.com @dns_server
-```
-
-```shell
-# example
-dig www.example.com
-dig a www.example.com
-dig txt www.example.com
-dig www.example.com @dns_server
-```
-
-```shell
-# example
-dig www.example.com
-dig a www.example.com
-dig txt www.example.com
-dig www.example.com @dns_server
+........
 ```

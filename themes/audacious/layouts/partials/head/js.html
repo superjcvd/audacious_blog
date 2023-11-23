@@ -9,8 +9,8 @@
 {{ $bootstrap_prod := resources.Get "imports/bootstrap/dist/js/bootstrap.bundle.js" | js.Build $opts | fingerprint }}
 
 
-{{ $js_dev := slice $theme_dev $bootstrap_dev }} 
-{{ $js_prod := slice $theme_prod $bootstrap_prod }}
+{{ $js_dev := slice $bootstrap_dev }} 
+{{ $js_prod := slice $bootstrap_prod }}
 
 {{- if eq hugo.Environment "development" }}
   {{ range $js_dev }}
