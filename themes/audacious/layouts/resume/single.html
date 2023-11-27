@@ -10,32 +10,70 @@
 {{- $languages := .Site.Data.resume.data.Languages }}
 {{- $interests := .Site.Data.resume.data.Interests }}
 
+{{ $photo := resources.Get "images/profile_small.jpg" }}
+
+
 <div class="row">
   <div class="col-8">
     <h1>{{ $name }}</h1>
     <h2>{{ $title }}</h1>
-    <h3 class="pt-4">Profile</h3><div class="border-top pb-2"></div>
+    <h3 class="text-title pt-4">Profile</h3>
+    <div class="border-top pb-2"></div>
     <div>{{ $profile }}</div>
 
-    <h3 class="pt-4">Experience</h3><div class="border-top pb-2"></div>
-    <div>{{ $experience }}</div>
+    <h3 class="text-title pt-4">Experience</h3>
+    <div class="border-top pb-2"></div>
+    <div>
+    {{ range $experience }}
+      <h5 class="text-subtitle">{{ .Employer }} - {{ .City }}</h5>
+      <h6>Date: {{ .Date }}</h6>
+      <h6>Position: {{ .Position }}</h6>
+      <h6>Detail:</h6>
+      <p>{{ .Detail }}</p>
+    {{ end }}
+    </div>
 
-    <h3 class="pt-4">Education</h3><div class="border-top pb-2"></div>
-    <div>{{ $education }}</div>
+    <h3 class="text-title pt-4">Education</h3>
+    <div class="border-top pb-2"></div>
+    <div>
+    {{ range $education }}
+      <h5 class="text-subtitle">{{ .Place }}</h5>
+      <h6>Date: {{ .Date }}</h6>
+      <h6>Course: {{ .Course }}</h6>
+      <h6>Detail:</h6>
+      <p>{{ .Detail }}</p>
+    {{ end }}
+    </div>
 
-    <h3 class="pt-4">Interests</h3><div class="border-top pb-2"></div>
-    <div>{{ $interests }}</div>
-
-    
+    <h3 class="text-title pt-4">Interests</h3>
+    <div class="border-top pb-2"></div>
+    {{ range $interests }}
+      <div class="d-flex align-content-start flex-wrap">
+        <div class="text-subtitle px-3"><i class="fa-solid {{ .Icon }}"></i></div>
+        <div class="">{{ .Name }}</div>
+      </div>
+    {{ end }}
   </div>
 
   <div class="col-4">
-    <div>{{ $info }}</div>
-    <div>{{ $skills }}</div>
+    <div class="float-end">
+      <img class="img-fluid rounded" src="{{ $photo.RelPermalink }}" width="256px" height="256px" alt="photo">
+    </div>
+    <div class="float-start">
+      <div>First name: {{ $info.FirstName }}</div>
+      <div>Last name: {{ $info.LastName }}</div>
+      <div>City: {{ $info.City }}</div>
+      <div>Country: {{ $info.Country }}</div>
+    </div>
+
+
+    <div class="float-start">
+      {{ range $skills.Cybersecurity }}
+      <div class="btn btn-primary bg-gradient btn-sm my-1">{{ . }}</div>
+      {{ end }}
+    </div>
   </div>
 
-
-
-
+</div>
 
 {{ end }}

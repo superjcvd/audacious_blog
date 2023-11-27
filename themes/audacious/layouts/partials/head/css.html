@@ -1,11 +1,18 @@
 <!-- SCSS DEV -->
 {{ $bootsrap_dev := resources.Get "scss/bootstrap.scss" | toCSS}}
+{{ $fontawesome_dev := resources.Get "css/fontawesome.css" }}
+{{ $fontawesome_s_dev := resources.Get "css/solid.css" }}
+
 <!-- SCSS PROD -->
 {{ $bootsrap_prod := resources.Get "scss/bootstrap.scss" | toCSS | minify | fingerprint}}
-
+{{ $fontawesome_prod := resources.Get "css/fontawesome.css" | minify | fingerprint }}
+{{ $fontawesome_s_prod := resources.Get "css/solid.css" | minify | fingerprint }}
 
 {{- if eq hugo.Environment "development" }}
   <link rel="stylesheet" href="{{ $bootsrap_dev.RelPermalink }}" />
+  <link rel="stylesheet" href="{{ $fontawesome_dev.RelPermalink }}" />
+  <link rel="stylesheet" href="{{ $fontawesome_s_dev.RelPermalink }}" />
+
 {{- else }}
   <link
     rel="stylesheet"
@@ -13,4 +20,16 @@
     integrity="{{ $bootsrap_prod.Data.Integrity }}"
     crossorigin="anonymous"
   />
+  <link
+    rel="stylesheet"
+    href="{{ $fontawesome_prod.RelPermalink }}"
+    integrity="{{ $fontawesome_prod.Data.Integrity }}"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="{{ $fontawesome_s_prod.RelPermalink }}"
+    integrity="{{ $fontawesome_prod.Data.Integrity }}"
+    crossorigin="anonymous"
+  /> 
 {{- end }}
