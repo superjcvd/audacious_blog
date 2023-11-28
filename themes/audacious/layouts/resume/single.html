@@ -2,6 +2,7 @@
 
 {{- $name := .Site.Data.resume.data.Name }}
 {{- $title := .Site.Data.resume.data.Title }}
+{{- $photo := .Site.Data.resume.data.Photo }}
 {{- $info := .Site.Data.resume.data.Info }}
 {{- $profile := .Site.Data.resume.data.Profile }}
 {{- $skills := .Site.Data.resume.data.Skills }}
@@ -10,66 +11,115 @@
 {{- $languages := .Site.Data.resume.data.Languages }}
 {{- $interests := .Site.Data.resume.data.Interests }}
 
-{{ $photo := resources.Get "images/profile_small.jpg" }}
+{{ $image := resources.Get $photo }}
 
 
-<div class="row">
-  <div class="col-8">
-    <h1>{{ $name }}</h1>
-    <h2>{{ $title }}</h1>
-    <h3 class="text-title pt-4">Profile</h3>
-    <div class="border-top pb-2"></div>
-    <div>{{ $profile }}</div>
-
-    <h3 class="text-title pt-4">Experience</h3>
-    <div class="border-top pb-2"></div>
+<div class="row border">
+  <div class="col-8 border">
     <div>
-    {{ range $experience }}
-      <h5 class="text-subtitle">{{ .Employer }} - {{ .City }}</h5>
-      <h6>Date: {{ .Date }}</h6>
-      <h6>Position: {{ .Position }}</h6>
-      <h6>Detail:</h6>
-      <p>{{ .Detail }}</p>
-    {{ end }}
+      <h1>{{ $name }}</h1>
+      <h2>{{ $title }}</h1>
+      <h3 class="text-title pt-4">Profile</h3>
+      <div class="border-top pb-2"></div>
+      <div>{{ $profile }}</div>
     </div>
 
-    <h3 class="text-title pt-4">Education</h3>
-    <div class="border-top pb-2"></div>
     <div>
-    {{ range $education }}
-      <h5 class="text-subtitle">{{ .Place }}</h5>
-      <h6>Date: {{ .Date }}</h6>
-      <h6>Course: {{ .Course }}</h6>
-      <h6>Detail:</h6>
-      <p>{{ .Detail }}</p>
-    {{ end }}
-    </div>
-
-    <h3 class="text-title pt-4">Interests</h3>
-    <div class="border-top pb-2"></div>
-    {{ range $interests }}
-      <div class="d-flex align-content-start flex-wrap">
-        <div class="text-subtitle px-3"><i class="fa-solid {{ .Icon }}"></i></div>
-        <div class="">{{ .Name }}</div>
+      <h3 class="text-title pt-4">Experience</h3>
+      <div class="border-top pb-2"></div>
+      <div>
+      {{ range $experience }}
+        <h5 class="text-subtitle">{{ .Employer }} - {{ .City }}</h5>
+        <h6>Date: {{ .Date }}</h6>
+        <h6>Position: {{ .Position }}</h6>
+        <h6>Detail:</h6>
+        <p>{{ .Detail }}</p>
+      {{ end }}
       </div>
-    {{ end }}
+    </div>
+
+    <div>
+      <h3 class="text-title pt-4">Education</h3>
+      <div class="border-top pb-2"></div>
+      <div>
+      {{ range $education }}
+        <h5 class="text-subtitle">{{ .Place }}</h5>
+        <h6>Date: {{ .Date }}</h6>
+        <h6>Course: {{ .Course }}</h6>
+        <h6>Detail:</h6>
+        <p>{{ .Detail }}</p>
+      {{ end }}
+      </div>
+    </div>
+
+    <div class="">
+      <h3 class="text-title pt-4">Interests</h3>
+      <div class="border-top pb-2"></div>
+      <div class="p-3">
+        <table class="table table-borderless">
+          <tbody>
+          {{ range $interests }}
+            <tr>
+              <td class="text-subtitle"><i class="fa-solid {{ .Icon }}"></i></td>
+              <td  class="w-100">{{ .Name }}</td>
+            </tr>
+          {{ end }}
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
   <div class="col-4">
-    <div class="float-end">
-      <img class="img-fluid rounded" src="{{ $photo.RelPermalink }}" width="256px" height="256px" alt="photo">
+    <div class="pt-2">
+      <img class="img-responsive" src="{{ $image.RelPermalink }}" width="256px" height="256px" alt="photo">
     </div>
-    <div class="float-start">
-      <div>First name: {{ $info.FirstName }}</div>
-      <div>Last name: {{ $info.LastName }}</div>
-      <div>City: {{ $info.City }}</div>
-      <div>Country: {{ $info.Country }}</div>
+    <div class="pt-4">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td class="text-title"><i class="fa-solid fa-user"></i></td>
+            <td  class="text-subtitle">First name: </td>
+            <td  class="">{{ $info.FirstName }}</td>
+          </tr>
+          <tr>
+            <td class="text-title"><i class="fa-solid fa-user"></i></td>
+            <td  class="text-subtitle">Last name: </td>
+            <td  class="">{{ $info.LastName }}</td>
+          </tr>
+          <tr>
+            <td class="text-title"><i class="fa-solid fa-location-dot"></i></td>
+            <td  class="text-subtitle">City: </td>
+            <td  class="">{{ $info.City }}</td>
+          </tr>
+          <tr>
+            <td class="text-title"><i class="fa-solid fa-earth-americas"></i></td>
+            <td  class="text-subtitle">Country: </td>
+            <td  class="">{{ $info.Country }}</td>
+          </tr>
+          <tr>
+            <td class="text-title"><i class="fa-solid fa-earth-americas"></i></td>
+            <td  class="text-subtitle">Email: </td>
+            <td  class="">{{ $info.Email }}</td>
+          </tr>
+          <tr>
+            <td class="text-title"><i class="fa-solid fa-earth-americas"></i></td>
+            <td  class="text-subtitle">LinkedIn: </td>
+            <td  class=""><a href="{{ $info.LinkedIn }}" target="_blank">LinkedIn</a></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
 
-    <div class="float-start">
-      {{ range $skills.Cybersecurity }}
-      <div class="btn btn-primary bg-gradient btn-sm my-1">{{ . }}</div>
+    <div class="">
+      <h3 class="text-title pt-4">Skills</h3>
+      <div class="border-top pb-2"></div>
+      {{ range $key, $value := $skills }}
+        <h5 class="text-subtitle pt-4 pb-2">{{ $key }}</h5>
+        {{ range $value }}
+        <div class="btn btn-primary bg-gradient btn-sm my-1">{{ . }}</div>
+        {{ end }}
       {{ end }}
     </div>
   </div>

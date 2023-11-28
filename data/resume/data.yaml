@@ -2,12 +2,15 @@ Name: Gaël Soudé
 
 Title: Cyber Security Engineer
 
+Photo: images/profile_small.jpg
+
 Info:
   FirstName: Gaël
   LastName: Soudé
-  Photo: img/avatar.jpg
   City: Frontignan
   Country: France
+  Email: gael.soude@gmail.com
+  LinkedIn: https://www.linkedin.com/in/gael-soude/
 
 Contacts:
   - Icon: fa-phone
