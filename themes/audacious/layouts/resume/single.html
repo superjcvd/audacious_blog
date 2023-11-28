@@ -10,15 +10,14 @@
 {{- $education := .Site.Data.resume.data.Education }}
 {{- $languages := .Site.Data.resume.data.Languages }}
 {{- $interests := .Site.Data.resume.data.Interests }}
-
 {{ $image := resources.Get $photo }}
 
 
-<div class="row border">
-  <div class="col-8 border">
+<div class="row">
+  <div class="col-8">
     <div>
-      <h1>{{ $name }}</h1>
-      <h2>{{ $title }}</h1>
+      <h1 class="text-title pb-2">{{ $name }}</h1>
+      <h2 class="pb-2">{{ $title }}</h1>
       <h3 class="text-title pt-4">Profile</h3>
       <div class="border-top pb-2"></div>
       <div>{{ $profile }}</div>
@@ -56,7 +55,7 @@
       <h3 class="text-title pt-4">Interests</h3>
       <div class="border-top pb-2"></div>
       <div class="p-3">
-        <table class="table table-borderless">
+        <table class="table table-sm table-borderless">
           <tbody>
           {{ range $interests }}
             <tr>
@@ -71,11 +70,11 @@
   </div>
 
   <div class="col-4">
-    <div class="pt-2">
-      <img class="img-responsive" src="{{ $image.RelPermalink }}" width="256px" height="256px" alt="photo">
+    <div class="p-3">
+      <img class="img-responsive rounded" src="{{ $image.RelPermalink }}" width="256px" alt="photo">
     </div>
-    <div class="pt-4">
-      <table class="table table-borderless">
+    <div class="">
+      <table class="table table-sm table-borderless">
         <tbody>
           <tr>
             <td class="text-title"><i class="fa-solid fa-user"></i></td>
@@ -113,7 +112,7 @@
 
 
     <div class="">
-      <h3 class="text-title pt-4">Skills</h3>
+      <h3 class="text-title pt-5">Skills</h3>
       <div class="border-top pb-2"></div>
       {{ range $key, $value := $skills }}
         <h5 class="text-subtitle pt-4 pb-2">{{ $key }}</h5>

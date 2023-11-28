@@ -2,16 +2,19 @@
 {{ $bootsrap_dev := resources.Get "scss/bootstrap.scss" | toCSS}}
 {{ $fontawesome_dev := resources.Get "css/fontawesome.css" }}
 {{ $fontawesome_s_dev := resources.Get "css/solid.css" }}
+{{ $print_dev := resources.Get "css/print.css" }}
 
 <!-- SCSS PROD -->
 {{ $bootsrap_prod := resources.Get "scss/bootstrap.scss" | toCSS | minify | fingerprint}}
 {{ $fontawesome_prod := resources.Get "css/fontawesome.css" | minify | fingerprint }}
 {{ $fontawesome_s_prod := resources.Get "css/solid.css" | minify | fingerprint }}
+{{ $print_prod := resources.Get "css/print.css" | minify | fingerprint }}
 
 {{- if eq hugo.Environment "development" }}
   <link rel="stylesheet" href="{{ $bootsrap_dev.RelPermalink }}" />
   <link rel="stylesheet" href="{{ $fontawesome_dev.RelPermalink }}" />
   <link rel="stylesheet" href="{{ $fontawesome_s_dev.RelPermalink }}" />
+  <link rel="stylesheet" href="{{ $print_dev.RelPermalink }}" />
 
 {{- else }}
   <link

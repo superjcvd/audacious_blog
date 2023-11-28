@@ -5,46 +5,57 @@ draft = false
 tags = ['cheatsheet', 'dns']
 +++
 
-...
+Few command lines that can be used for crafting DNS requests for debug purposes
 
 <!--more-->
 
-## dig command line
+## DNS
 
-`dig www.example.com`
-
-`dig a www.example.com`
+How to send standard DNS requests with CLI
 
 ```shell
-# example
+### INSTALL
+apt install dnsutils
+
+
+# simple dns request
 dig www.example.com
+# specify request type
 dig a www.example.com
 dig txt www.example.com
-dig www.example.com @dns_server
-ls -al
+# specify dns server
+dig @dns_server www.example.com
+# short answer
+dig @server redhat.com  A +noall +answer
+# short answer with all
+dig @server redhat.com  ANY +noall +answer
+# DMARC
+dig +short txt _dmarc.teads.com
+dig +short txt _domainkey.teads.com
+dig +short txt google._domainkey.teads.com
 ```
 
-```js {linenos=table,hl_lines=[8,"15-17"],linenostart=199, style=tanxxxgo}
-# example
-const toto="coucou";
-if(toto == "coucou"){
-    return "toto";
-}
-........
-```
+## DOH
 
-```js
-// example
-const toto="coucou";
-........
-```
+How to send DOH DNS requests with CLI
 
 ```shell
-# example
-........
+### INSTALL
+apt install curl
+
+# simple dns request
+curl -H 'accept: application/dns-json' '\
+https://cloudflare-dns.com/dns-query?name=example.com&type=A' | jq .
 ```
 
+## DOT
+
+How to send DOT DNS requests with CLI
+
 ```shell
-# example
-........
+### INSTALL
+apt install knot-dnsutils
+
+# simple dns request
+kdig -d @cloudflare-dns.com +tls-ca +tls-host=cloudflare-dns.com example.com
 ```
