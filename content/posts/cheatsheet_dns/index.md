@@ -21,15 +21,21 @@ dig www.example.com
 dig a www.example.com
 dig txt www.example.com
 dig www.example.com @dns_server
+ls -al
 ```
 
-```shell
+```js {linenos=table,hl_lines=[8,"15-17"],linenostart=199, style=tanxxxgo}
 # example
+const toto="coucou";
+if(toto == "coucou"){
+    return "toto";
+}
 ........
 ```
 
-```shell
-# example
+```js
+// example
+const toto="coucou";
 ........
 ```
 

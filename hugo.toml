@@ -2,3 +2,7 @@ baseURL = 'https://audacious-unicorn.com/'
 languageCode = 'en-us'
 title = 'Audacious Blog'
 theme = "audacious"
+
+[markup]
+  [markup.highlight]
+    style="solarized-dark256"
