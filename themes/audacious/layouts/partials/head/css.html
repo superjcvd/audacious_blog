@@ -7,7 +7,7 @@
 <!-- SCSS PROD -->
 {{ $bootsrap_prod := resources.Get "scss/bootstrap.scss" | toCSS | minify | fingerprint}}
 {{ $fontawesome_prod := resources.Get "css/fontawesome.css" | minify | fingerprint }}
-{{ $fontawesome_s_prod := resources.Get "css/solid.css" | minify | fingerprint }}
+{{ $fontawesome_solid_prod := resources.Get "css/solid.css" | minify | fingerprint }}
 {{ $print_prod := resources.Get "css/print.css" | minify | fingerprint }}
 
 {{- if eq hugo.Environment "development" }}
@@ -31,8 +31,8 @@
   />
   <link
     rel="stylesheet"
-    href="{{ $fontawesome_s_prod.RelPermalink }}"
-    integrity="{{ $fontawesome_prod.Data.Integrity }}"
+    href="{{ $fontawesome_solid_prod.RelPermalink }}"
+    integrity="{{ $fontawesome_solid_prod.Data.Integrity }}"
     crossorigin="anonymous"
   /> 
 {{- end }}
