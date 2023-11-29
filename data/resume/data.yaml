@@ -4,37 +4,53 @@ Title: Cyber Security Engineer
 
 Photo: images/gael.png
 
-Info:
-  FirstName: Gaël
-  LastName: Soudé
-  City: Frontignan
-  Country: France
-  Email: gael.soude@gmail.com
-  LinkedIn: https://www.linkedin.com/in/gael-soude/
-
-Contacts:
+Contact:
+  - Icon: fa-user
+    Key: First.name
+    Value: Gaël
+  - Icon: fa-user
+    Key: Last.name
+    Value: Soudé
   - Icon: fa-phone
-    Info: +33 06 27 51 67 31
+    Key: Phone
+    Value: +33 06 27 51 67 31
   - Icon: fa-envelope
-    Info: gael.soude@gmail.com
+    Key: Email
+    Value: gael.soude@gmail.com
   - Icon: fa-globe
-    Info: <a class="contact__link" href="https://audacious-unicorn.com" target="_blank">audacious-unicorn.com</a>
+    Key: LinkedIn
+    Value: /gael-soude/
   - Icon: fa-map-marker-alt
-    Info: France
+    Key: Location
+    Value: Frontignan, Occitanie, France
 
 Profile: My quick presentation here
 
 Skills:
   Cybersecurity:
     - Awareness
-    - Authentication
     - Governance
+    - Authentication
+    - Access Control
+    - Forensic
+    - Pentesting
+    - Networking Security
     - Linux
-    - Networking
+  Vendors:
+    - AWS
+    - Azure
+    - GCP
+    - Checkpoint
+    - Palo Alto
+    - Juniper
+    - Fortinet
+    - CISCO
+
   Programming:
     - Python
     - Golang
     - ReactJS
+    - Shell
 
 Experience:
   - Employer: NTT Security
@@ -71,12 +87,10 @@ Experience:
 Education:
   - Course: BTEC in IT
     Place: IUT Orsay
-    Date: 2003-2004
-    Detail: ...
+    Date: 2002-2004
   - Course: Engineer school in IT
     Place: ESIGETEL
-    Date: 2005-2007
-    Detail: ...
+    Date: 2004-2007
 
 Languages:
   - Name: French

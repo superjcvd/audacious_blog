@@ -1,9 +1,11 @@
 {{ define "main" }}
 
+{{- $data := .Site.Data.resume.data }}
+
 {{- $name := .Site.Data.resume.data.Name }}
 {{- $title := .Site.Data.resume.data.Title }}
 {{- $photo := .Site.Data.resume.data.Photo }}
-{{- $info := .Site.Data.resume.data.Info }}
+{{- $contact := .Site.Data.resume.data.Contact }}
 {{- $profile := .Site.Data.resume.data.Profile }}
 {{- $skills := .Site.Data.resume.data.Skills }}
 {{- $experience := .Site.Data.resume.data.Experience }}
@@ -14,16 +16,22 @@
 
 <div class="row">
   <div class="col-8">
-    <div>
-      <h1 class="text-title pb-2">{{ $name }}</h1>
-      <h2 class="pb-2">{{ $title }}</h1>
-      <h3 class="text-title pt-4">Profile</h3>
+
+    <!-- Name and title -->
+    <div class="pb-4">
+      <h1 class="text-title">{{ $name }}</h1>
+      <h2 class="">{{ $title }}</h1>
+    </div>
+
+
+    <div class="pb-4">
+      <h3 class="text-title">Profile</h3>
       <div class="border-top pb-2"></div>
       <div>{{ $profile }}</div>
     </div>
 
-    <div>
-      <h3 class="text-title pt-4">Experience</h3>
+    <div class="pb-4">
+      <h3 class="text-title">Experience</h3>
       <div class="border-top pb-2"></div>
       <div>
       {{ range $experience }}
@@ -39,16 +47,14 @@
     <!-- New page for PDF export -->
     <div class="pagebreak"></div>
 
-    <div>
-      <h3 class="text-title pt-4">Education</h3>
+    <div class="pb-4">
+      <h3 class="text-title">Education</h3>
       <div class="border-top pb-2"></div>
       <div>
       {{ range $education }}
-        <h5 class="text-subtitle">{{ .Place }}</h5>
+        <h5 class="text-subtitle pt-3">{{ .Place }}</h5>
         <h6>Date: {{ .Date }}</h6>
         <h6>Course: {{ .Course }}</h6>
-        <h6>Detail:</h6>
-        <p>{{ .Detail }}</p>
       {{ end }}
       </div>
     </div>
@@ -78,36 +84,13 @@
     <div class="">
       <table class="table table-sm table-borderless">
         <tbody>
+          {{ range $data.Contact }}
           <tr>
-            <td class="text-title"><i class="fa-solid fa-user"></i></td>
-            <td  class="text-subtitle">First name: </td>
-            <td  class="">{{ $info.FirstName }}</td>
+            <td class="text-title"><i class="fa-solid {{ .Icon }}"></i></td>
+            <td  class="text-subtitle">{{ .Key }}: </td>
+            <td  class="">{{ .Value }}</td>
           </tr>
-          <tr>
-            <td class="text-title"><i class="fa-solid fa-user"></i></td>
-            <td  class="text-subtitle">Last name: </td>
-            <td  class="">{{ $info.LastName }}</td>
-          </tr>
-          <tr>
-            <td class="text-title"><i class="fa-solid fa-location-dot"></i></td>
-            <td  class="text-subtitle">City: </td>
-            <td  class="">{{ $info.City }}</td>
-          </tr>
-          <tr>
-            <td class="text-title"><i class="fa-solid fa-earth-americas"></i></td>
-            <td  class="text-subtitle">Country: </td>
-            <td  class="">{{ $info.Country }}</td>
-          </tr>
-          <tr>
-            <td class="text-title"><i class="fa-solid fa-earth-americas"></i></td>
-            <td  class="text-subtitle">Email: </td>
-            <td  class="">{{ $info.Email }}</td>
-          </tr>
-          <tr>
-            <td class="text-title"><i class="fa-solid fa-earth-americas"></i></td>
-            <td  class="text-subtitle">LinkedIn: </td>
-            <td  class=""><a href="{{ $info.LinkedIn }}" target="_blank">LinkedIn</a></td>
-          </tr>
+          {{ end }}
         </tbody>
       </table>
     </div>
