@@ -7,10 +7,10 @@
   <head>
     {{ partial "head.html" . }}
   </head>
-  <body>
+  <body class="overflow-y-scroll">
     <div class="container">
       <header>{{ partial "header.html" . }}</header>
-      <main class="my-3 p-3 rounded">{{ block "main" . }}{{ end }}</main>
+      <main class="my-3 p-3">{{ block "main" . }}{{ end }}</main>
       <footer>{{ partial "footer.html" . }}</footer>
     </div>
   </body>
