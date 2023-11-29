@@ -1,7 +1,7 @@
 <!-- SCSS DEV -->
 {{ $bootsrap_dev := resources.Get "scss/bootstrap.scss" | toCSS}}
 {{ $fontawesome_dev := resources.Get "css/fontawesome.css" }}
-{{ $fontawesome_s_dev := resources.Get "css/solid.css" }}
+{{ $fontawesome_solid_dev := resources.Get "css/solid.css" }}
 {{ $print_dev := resources.Get "css/print.css" }}
 
 <!-- SCSS PROD -->
@@ -13,7 +13,7 @@
 {{- if eq hugo.Environment "development" }}
   <link rel="stylesheet" href="{{ $bootsrap_dev.RelPermalink }}" />
   <link rel="stylesheet" href="{{ $fontawesome_dev.RelPermalink }}" />
-  <link rel="stylesheet" href="{{ $fontawesome_s_dev.RelPermalink }}" />
+  <link rel="stylesheet" href="{{ $fontawesome_solid_dev.RelPermalink }}" />
   <link rel="stylesheet" href="{{ $print_dev.RelPermalink }}" />
 
 {{- else }}
@@ -34,5 +34,11 @@
     href="{{ $fontawesome_solid_prod.RelPermalink }}"
     integrity="{{ $fontawesome_solid_prod.Data.Integrity }}"
     crossorigin="anonymous"
-  /> 
+  />
+  <link
+  rel="stylesheet"
+  href="{{ $print_prod.RelPermalink }}"
+  integrity="{{ $print_prod.Data.Integrity }}"
+  crossorigin="anonymous"
+/> 
 {{- end }}
