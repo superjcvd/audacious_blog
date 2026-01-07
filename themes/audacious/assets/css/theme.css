@@ -1,0 +1,118 @@
+/* Custom Bootstrap theme colors */
+:root {
+    --bs-light: #fffefc;
+    --bs-dark: #0b1112;
+    --bs-primary: #5824c0;
+    --bs-secondary: #a966d9;
+    --bs-info: #6674c3;
+    --bs-success: #256b4a;
+    --bs-warning: #ecd948;
+    --bs-danger: #c34638;
+}
+
+/* Custom theme colors */
+.bg-content {
+    background-color: #49886a !important;
+}
+
+.bg-tags {
+    background-color: #7044c9 !important;
+}
+
+.text-title {
+    color: #7044c9 !important;
+}
+
+.text-subtitle {
+    color: #9a7cd9 !important;
+}
+
+/* Override Bootstrap default colors */
+.btn-primary {
+    --bs-btn-bg: #5824c0;
+    --bs-btn-border-color: #5824c0;
+    --bs-btn-hover-bg: #4a1fa3;
+    --bs-btn-hover-border-color: #4a1fa3;
+    --bs-btn-active-bg: #4a1fa3;
+    --bs-btn-active-border-color: #4a1fa3;
+}
+
+.btn-secondary {
+    --bs-btn-bg: #a966d9;
+    --bs-btn-border-color: #a966d9;
+    --bs-btn-hover-bg: #9550c7;
+    --bs-btn-hover-border-color: #9550c7;
+    --bs-btn-active-bg: #9550c7;
+    --bs-btn-active-border-color: #9550c7;
+}
+
+.btn-info {
+    --bs-btn-bg: #6674c3;
+    --bs-btn-border-color: #6674c3;
+    --bs-btn-hover-bg: #5562a8;
+    --bs-btn-hover-border-color: #5562a8;
+    --bs-btn-active-bg: #5562a8;
+    --bs-btn-active-border-color: #5562a8;
+}
+
+.btn-success {
+    --bs-btn-bg: #256b4a;
+    --bs-btn-border-color: #256b4a;
+    --bs-btn-hover-bg: #1e563a;
+    --bs-btn-hover-border-color: #1e563a;
+    --bs-btn-active-bg: #1e563a;
+    --bs-btn-active-border-color: #1e563a;
+}
+
+.btn-warning {
+    --bs-btn-bg: #ecd948;
+    --bs-btn-border-color: #ecd948;
+    --bs-btn-hover-bg: #e8d12f;
+    --bs-btn-hover-border-color: #e8d12f;
+    --bs-btn-active-bg: #e8d12f;
+    --bs-btn-active-border-color: #e8d12f;
+}
+
+.btn-danger {
+    --bs-btn-bg: #c34638;
+    --bs-btn-border-color: #c34638;
+    --bs-btn-hover-bg: #a83a2e;
+    --bs-btn-hover-border-color: #a83a2e;
+    --bs-btn-active-bg: #a83a2e;
+    --bs-btn-active-border-color: #a83a2e;
+}
+
+.text-info {
+    --bs-text-opacity: 1;
+    color: #6674c3 !important;
+}
+
+.bg-primary {
+    --bs-bg-opacity: 1;
+    background-color: rgba(88, 36, 192, var(--bs-bg-opacity)) !important;
+}
+
+.bg-secondary {
+    --bs-bg-opacity: 1;
+    background-color: rgba(169, 102, 217, var(--bs-bg-opacity)) !important;
+}
+
+.bg-info {
+    --bs-bg-opacity: 1;
+    background-color: rgba(102, 116, 195, var(--bs-bg-opacity)) !important;
+}
+
+.bg-success {
+    --bs-bg-opacity: 1;
+    background-color: rgba(37, 107, 74, var(--bs-bg-opacity)) !important;
+}
+
+.bg-warning {
+    --bs-bg-opacity: 1;
+    background-color: rgba(236, 217, 72, var(--bs-bg-opacity)) !important;
+}
+
+.bg-danger {
+    --bs-bg-opacity: 1;
+    background-color: rgba(195, 70, 56, var(--bs-bg-opacity)) !important;
+}

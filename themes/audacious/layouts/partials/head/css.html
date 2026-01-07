@@ -1,44 +1,19 @@
-<!-- SCSS DEV -->
-{{ $bootsrap_dev := resources.Get "scss/bootstrap.scss" | toCSS}}
-{{ $fontawesome_dev := resources.Get "css/fontawesome.css" }}
-{{ $fontawesome_solid_dev := resources.Get "css/solid.css" }}
+<!-- Bootstrap CSS from CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+<!-- Custom theme CSS -->
+{{ $theme_css := resources.Get "css/theme.css" }}
 {{ $print_dev := resources.Get "css/print.css" }}
 
-<!-- SCSS PROD -->
-{{ $bootsrap_prod := resources.Get "scss/bootstrap.scss" | toCSS | minify | fingerprint}}
-{{ $fontawesome_prod := resources.Get "css/fontawesome.css" | minify | fingerprint }}
-{{ $fontawesome_solid_prod := resources.Get "css/solid.css" | minify | fingerprint }}
-{{ $print_prod := resources.Get "css/print.css" | minify | fingerprint }}
-
 {{- if eq hugo.Environment "development" }}
-  <link rel="stylesheet" href="{{ $bootsrap_dev.RelPermalink }}" />
-  <link rel="stylesheet" href="{{ $fontawesome_dev.RelPermalink }}" />
-  <link rel="stylesheet" href="{{ $fontawesome_solid_dev.RelPermalink }}" />
-  <link rel="stylesheet" href="{{ $print_dev.RelPermalink }}" />
-
+<link rel="stylesheet" href="{{ $theme_css.RelPermalink }}" />
+<link rel="stylesheet" href="{{ $print_dev.RelPermalink }}" />
 {{- else }}
-  <link
-    rel="stylesheet"
-    href="{{ $bootsrap_prod.RelPermalink }}"
-    integrity="{{ $bootsrap_prod.Data.Integrity }}"
-    crossorigin="anonymous"
-  />
-  <link
-    rel="stylesheet"
-    href="{{ $fontawesome_prod.RelPermalink }}"
-    integrity="{{ $fontawesome_prod.Data.Integrity }}"
-    crossorigin="anonymous"
-  />
-  <link
-    rel="stylesheet"
-    href="{{ $fontawesome_solid_prod.RelPermalink }}"
-    integrity="{{ $fontawesome_solid_prod.Data.Integrity }}"
-    crossorigin="anonymous"
-  />
-  <link
-  rel="stylesheet"
-  href="{{ $print_prod.RelPermalink }}"
-  integrity="{{ $print_prod.Data.Integrity }}"
-  crossorigin="anonymous"
-/> 
+{{ $theme_css_prod := $theme_css | minify | fingerprint }}
+{{ $print_prod := $print_dev | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $theme_css_prod.RelPermalink }}" integrity="{{ $theme_css_prod.Data.Integrity }}"
+  crossorigin="anonymous" />
+<link rel="stylesheet" href="{{ $print_prod.RelPermalink }}" integrity="{{ $print_prod.Data.Integrity }}"
+  crossorigin="anonymous" />
 {{- end }}

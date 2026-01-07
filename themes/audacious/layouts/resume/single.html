@@ -1,116 +1,176 @@
 {{ define "main" }}
 
-{{- $data := .Site.Data.resume.data }}
+{{- $name := .Params.Name | default "Name not provided" }}
+{{- $title := .Params.Title | default "" }}
+{{- $photo := .Params.Photo | default "" }}
+{{- $contact := .Params.Contact | default slice }}
+{{- $profile := .Params.Profile | default slice }}
+{{- $skills := .Params.Skills | default dict }}
+{{- $experience := .Params.Experience | default slice }}
+{{- $education := .Params.Education | default slice }}
+{{- $languages := .Params.Languages | default slice }}
+{{- $interests := .Params.Interests | default slice }}
+{{- $image := "" }}
+{{- if $photo }}
+{{- $image = resources.Get $photo }}
+{{- end }}
 
-{{- $name := .Site.Data.resume.data.Name }}
-{{- $title := .Site.Data.resume.data.Title }}
-{{- $photo := .Site.Data.resume.data.Photo }}
-{{- $contact := .Site.Data.resume.data.Contact }}
-{{- $profile := .Site.Data.resume.data.Profile }}
-{{- $skills := .Site.Data.resume.data.Skills }}
-{{- $experience := .Site.Data.resume.data.Experience }}
-{{- $education := .Site.Data.resume.data.Education }}
-{{- $languages := .Site.Data.resume.data.Languages }}
-{{- $interests := .Site.Data.resume.data.Interests }}
-{{ $image := resources.Get $photo }}
+{{- if or (not $name) (eq $name "Name not provided") }}
+<div class="alert alert-warning">Resume data not found. Please check your front matter.</div>
+{{- else }}
 
 <div class="row">
-  <div class="col-8">
+  <div class="col-lg-8 col-md-12">
 
     <!-- Name and title -->
     <div class="pb-4">
       <h1 class="text-title">{{ $name }}</h1>
-      <h2 class="">{{ $title }}</h1>
+      {{- if $title }}
+      <h2 class="">{{ $title }}</h2>
+      {{- end }}
     </div>
 
     <!-- Profile -->
+    {{- if $profile }}
     <div class="pb-4">
       <h3 class="text-title">Profile</h3>
       <div class="border-top pb-2"></div>
-      <div>{{ $profile }}</div>
+      <div>
+        {{ range $profile }}
+        {{ . }}<br>
+        {{ end }}
+      </div>
     </div>
+    {{- end }}
 
     <!-- Experience -->
+    {{- if $experience }}
     <div class="pb-4">
       <h3 class="text-title">Experience</h3>
       <div class="border-top pb-2"></div>
       <div>
-      {{ range $experience }}
-        <h5 class="text-subtitle">{{ .Employer }} - {{ .City }}</h5>
-        <h6>Date: {{ .Date }}</h6>
-        <h6>Position: {{ .Position }}</h6>
-        <h6>Detail:</h6>
-        <p>{{ .Detail }}</p>
-      {{ end }}
+        {{ range $experience }}
+        <div class="mb-4">
+          <h5 class="text-subtitle">{{ .Employer }} - {{ .City }}</h5>
+          <h6 class="text-info">{{ .Date }}</h6>
+          <h6><strong>{{ .Position }}</strong></h6>
+          {{- if .Detail }}
+          <ul class="mt-2 mb-0">
+            {{- $details := split .Detail "\n" }}
+            {{- range $details }}
+            {{- $trimmed := trim . " \t\r\n" }}
+            {{- if $trimmed }}
+            <li>{{ $trimmed }}</li>
+            {{- end }}
+            {{- end }}
+          </ul>
+          {{- end }}
+        </div>
+        {{ end }}
       </div>
     </div>
+    {{- end }}
 
     <!-- New page break for PDF export -->
-    <div class="pagebreak"></div>
+    <!-- <div class="pagebreak"></div> -->
 
     <!-- Education -->
+    {{- if $education }}
     <div class="pb-4">
       <h3 class="text-title">Education</h3>
       <div class="border-top pb-2"></div>
       <div>
-      {{ range $education }}
-        <h5 class="text-subtitle pt-3">{{ .Place }}</h5>
-        <h6>Date: {{ .Date }}</h6>
-        <h6>Course: {{ .Course }}</h6>
-      {{ end }}
+        {{ range $education }}
+        <div class="mb-3">
+          <h5 class="text-subtitle pt-3">{{ .Place }}</h5>
+          <h6 class="text-info">{{ .Date }}</h6>
+          <h6>{{ .Course }}</h6>
+        </div>
+        {{ end }}
       </div>
     </div>
+    {{- end }}
+
+    <!-- Languages -->
+    {{- if $languages }}
+    <div class="pb-4">
+      <h3 class="text-title">Languages</h3>
+      <div class="border-top pb-2"></div>
+      <div>
+        {{ range $languages }}
+        <p><strong>{{ .Name }}</strong>: {{ .Level }}</p>
+        {{ end }}
+      </div>
+    </div>
+    {{- end }}
 
     <!-- Interests -->
+    {{- if $interests }}
     <div class="">
       <h3 class="text-title pt-4">Interests</h3>
       <div class="border-top pb-2"></div>
       <div class="p-3">
         <table class="table table-sm table-borderless">
           <tbody>
-          {{ range $interests }}
+            {{ range $interests }}
             <tr>
-              <td class="text-subtitle"><i class="fa-solid {{ .Icon }}"></i></td>
-              <td  class="w-100">{{ .Name }}</td>
+              <td class="text-subtitle"><i class="fa-solid fa-{{ .Icon }}"></i></td>
+              <td class="w-100">{{ .Name }}</td>
             </tr>
-          {{ end }}
+            {{ end }}
           </tbody>
         </table>
       </div>
     </div>
+    {{- end }}
   </div>
 
   <!-- Contact -->
-  <div class="col-4">
+  <div class="col-lg-4 col-md-12">
+    {{- if $image }}
     <div class="py-3">
-      <img class="img-responsive rounded" src="{{ $image.RelPermalink }}" width="256px" alt="photo">
+      <img class="img-responsive rounded img-fluid" src="{{ $image.RelPermalink }}"
+        style="max-width: 256px; width: 100%;" alt="{{ $name }} photo">
     </div>
+    {{- end }}
+    {{- if $contact }}
     <div class="">
       <table class="table table-sm table-borderless">
         <tbody>
-          {{ range $data.Contact }}
+          {{ range $contact }}
           <tr>
-            <td class="text-title"><i class="fa-solid {{ .Icon }}"></i></td>
-            <td  class="text-subtitle">{{ .Key }}: </td>
-            <td  class="">{{ .Value }}</td>
+            <td class="text-title"><i class="fa-solid fa-{{ .Icon }}"></i></td>
+            <td class="text-subtitle">{{ .Key }}: </td>
+            <td class="">
+              {{ if eq .Key "LinkedIn" }}
+              <a href="{{ .Value }}" target="_blank" rel="noopener noreferrer">{{ .Value }}</a>
+              {{ else if eq .Key "Email" }}
+              <a href="mailto:{{ .Value }}">{{ .Value }}</a>
+              {{ else }}
+              {{ .Value }}
+              {{ end }}
+            </td>
           </tr>
           {{ end }}
         </tbody>
       </table>
     </div>
+    {{- end }}
 
-
+    {{- if $skills }}
     <div class="">
       <h3 class="text-title pt-5">Skills</h3>
       <div class="border-top pb-2"></div>
       {{ range $key, $value := $skills }}
-        <h5 class="text-subtitle pt-4 pb-2">{{ $key }}</h5>
-        {{ range $value }}
-        <div class="btn btn-primary bg-gradient btn-sm my-1">{{ . }}</div>
-        {{ end }}
+      <h5 class="text-subtitle pt-4 pb-2">{{ $key }}</h5>
+      {{ range $value }}
+      <div class="btn btn-primary bg-gradient btn-sm my-1">{{ . }}</div>
+      {{ end }}
       {{ end }}
     </div>
+    {{- end }}
   </div>
 
 </div>
+{{- end }}
 {{ end }}

@@ -1,27 +1,18 @@
+<!-- Bootstrap JS from CDN -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<!-- Font Awesome 7 Kit -->
+<script src="https://kit.fontawesome.com/411f0e4e87.js" crossorigin="anonymous"></script>
+
+<!-- Theme JS -->
 {{- $opts := dict "minify" true }}
-
-<!-- DEV -->
 {{ $theme_dev := resources.Get "js/theme.js" | js.Build }}
-{{ $bootstrap_dev := resources.Get "imports/bootstrap/dist/js/bootstrap.bundle.js" | js.Build }}
-
-<!-- PROD -->
 {{ $theme_prod := resources.Get "js/theme.js" | js.Build $opts | fingerprint }}
-{{ $bootstrap_prod := resources.Get "imports/bootstrap/dist/js/bootstrap.bundle.js" | js.Build $opts | fingerprint }}
-
-
-{{ $js_dev := slice $bootstrap_dev }} 
-{{ $js_prod := slice $bootstrap_prod }}
 
 {{- if eq hugo.Environment "development" }}
-  {{ range $js_dev }}
-  <script src="{{ .RelPermalink }}"></script>
-  {{ end }}
+<script src="{{ $theme_dev.RelPermalink }}"></script>
 {{- else }}
-  {{ range $js_prod }}
-  <script
-    src="{{ .RelPermalink }}"
-    integrity="{{- .Data.Integrity }}"
-    crossorigin="anonymous"
-  ></script>
-  {{ end }}
+<script src="{{ $theme_prod.RelPermalink }}" integrity="{{ $theme_prod.Data.Integrity }}"
+  crossorigin="anonymous"></script>
 {{- end }}
