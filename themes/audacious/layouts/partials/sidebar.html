@@ -1,5 +1,6 @@
 {{- /*
 Renders a sidebar menu with icons on the left.
+Only supports parent-level menu items (no nested menus).
 
 @context {page} page The current page.
 @context {string} menuID The menu ID.
@@ -14,33 +15,20 @@ Renders a sidebar menu with icons on the left.
     <nav class="sidebar-nav">
         <ul class="sidebar-menu">
             {{- with index site.Menus $menuID }}
-            {{- partial "inline/menu/walk-sidebar.html" (dict "page" $page "menuEntries" .) }}
-            {{- else }}
-            {{/* Default menu items if no menu is configured */}}
+            {{- range . }}
+            {{- $isActive := $page.IsMenuCurrent .Menu . }}
+            <li class="sidebar-item {{ if $isActive }}active{{ end }}">
+                <a href="{{ .URL }}" class="sidebar-link" {{ if $isActive }}aria-current="page" {{ end }}>
+                    {{- if .Params.icon }}
+                    <i class="fa-solid fa-{{ .Params.icon }}"></i>
+                    {{- else }}
+                    <i class="fa-solid fa-circle"></i>
+                    {{- end }}
+                    <span class="sidebar-text">{{ .Name }}</span>
+                </a>
+            </li>
+            {{- end }}
             {{- end }}
         </ul>
     </nav>
 </aside>
-
-{{- define "partials/inline/menu/walk-sidebar.html" }}
-{{- $page := .page }}
-{{- range .menuEntries }}
-{{- $isActive := false }}
-{{- if $page.IsMenuCurrent .Menu . }}
-{{- $isActive = true }}
-{{- else if $page.HasMenuCurrent .Menu .}}
-{{- $isActive = true }}
-{{- end }}
-
-<li class="sidebar-item {{ if $isActive }}active{{ end }}">
-    <a href="{{ .URL }}" class="sidebar-link" {{ if $isActive }}aria-current="page" {{ end }}>
-        {{- if .Params.icon }}
-        <i class="fa-solid fa-{{ .Params.icon }}"></i>
-        {{- else }}
-        <i class="fa-solid fa-circle"></i>
-        {{- end }}
-        <span class="sidebar-text">{{ .Name }}</span>
-    </a>
-</li>
-{{- end }}
-{{- end }}

@@ -1,10 +1,14 @@
 +++
-title = 'Cybersecurity Engineer'
+title = 'Resume'
 type = 'resume'
 
 Name = 'Gaël Soudé'
-Title = 'Senior Cyber Security Engineer'
+JobTitle = 'Senior Cyber Security Engineer'
+Introduction = '''Senior Cybersecurity Engineer with over 15 years of experience across all security domains.
+Expertise in network security, DevSecOps, awareness, and compliance. 
+Proven track record in building security programs and managing incidents.'''
 Photo = 'images/gael.png'
+
 
 [[Contact]]
 Icon = 'phone'
@@ -20,6 +24,7 @@ Value = 'gael.soude@gmail.com'
 Icon = 'link'
 Key = 'LinkedIn'
 Value = 'https://www.linkedin.com/in/gael-soude/'
+DisplayLink = '/gael-soude/'
 
 [[Contact]]
 Icon = 'location-dot'

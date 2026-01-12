@@ -1,9 +1,9 @@
 +++
 title = 'CapySecurity'
+header = "Cybersecurity for everybody"
+summary = "Cybersecurity blog dedicated to making security accessible to everyone"
 +++
 
-Cybersecurity blog dedicated to making security accessible to everyone. 
-Whether you're a beginner looking to understand the basics or a professional seeking technical deep-dives, you'll find content tailored to your needs.
 
 ### What You'll Find Here
 

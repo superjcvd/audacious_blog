@@ -7,13 +7,11 @@
 </head>
 
 <body class="overflow-y-scroll">
+  {{ partial "sidebar.html" (dict "menuID" "main" "page" .) }}
   {{ partial "topbar.html" . }}
-  <div>
-    {{ partial "sidebar.html" (dict "menuID" "main" "page" .) }}
-    <div>
-      <main class="container">{{ block "main" . }}{{ end }}</main>
-      <footer>{{ partial "footer.html" . }}</footer>
-    </div>
+  <div class="content-wrapper">
+    <main class="container">{{ block "main" . }}{{ end }}</main>
+    <footer>{{ partial "footer.html" . }}</footer>
   </div>
 </body>
 
