@@ -2,57 +2,252 @@
 :root {
     --bs-light: #fffefc;
     --bs-dark: #0b1112;
-    --bs-primary: #5824c0;
-    --bs-secondary: #a966d9;
-    --bs-info: #6674c3;
+    --bs-primary: #7c3aed;
+    --bs-secondary: #a855f7;
+    --bs-info: #3b82f6;
     --bs-success: #256b4a;
     --bs-warning: #ecd948;
     --bs-danger: #c34638;
 }
 
-/* Custom theme colors */
-.bg-content {
-    background-color: #49886a !important;
+/* Purple to blue gradient background */
+/* body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+} */
+
+/* Layout structure */
+/* .layout-wrapper {
+    display: flex;
+    min-height: calc(100vh - var(--topbar-height, 60px));
+    margin-top: var(--topbar-height, 60px);
+} */
+
+/* Main content */
+/* .main-content {
+    flex: 1;
+    padding: 2rem;
+    background-color: transparent;
+} */
+
+/* Footer */
+footer {
+    margin-top: auto;
+    padding: 1rem 2rem;
 }
 
+/* Ensure content areas are readable on gradient */
+.container {
+    margin-top: calc(var(--topbar-height, 60px) + 4rem);
+    /* background-color: rgba(55, 59, 95, 0.95) !important; */
+}
+
+main {
+    background-color: transparent !important;
+}
+
+
+/* Sidebar styles */
+.sidebar {
+    width: 64px;
+    background-color: rgba(124, 58, 237, 0.75);
+    position: fixed;
+    left: 0;
+    top: var(--topbar-height, 60px);
+    height: calc(100vh - var(--topbar-height, 60px));
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    transition: width 0.3s ease;
+    overflow: hidden;
+}
+
+.sidebar:hover {
+    width: 200px;
+}
+
+.sidebar-nav {
+    width: 100%;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    /* margin: 0; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* gap: 0.25rem; */
+}
+
+.sidebar-item {
+    width: 100%;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    border-radius: 0;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.sidebar-text {
+    font-size: 0.9rem;
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, width 0.3s ease;
+}
+
+.sidebar:hover .sidebar-text {
+    opacity: 1;
+    width: auto;
+}
+
+.sidebar-link:hover {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-item.active .sidebar-link {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-link i {
+    font-size: 1.25rem;
+}
+
+/* Content wrapper */
+.content-wrapper {
+    flex: 1;
+    margin-left: 64px;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - var(--topbar-height, 60px));
+    transition: margin-left 0.3s ease;
+}
+
+/* Topbar styles */
+:root {
+    --topbar-height: 60px;
+}
+
+.topbar {
+    background-color: rgba(124, 58, 237, 0.75);
+    padding: 0 2rem;
+    min-height: var(--topbar-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1001;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.topbar-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.topbar-icon {
+    display: flex;
+    align-items: center;
+}
+
+.capybara-icon {
+    width: 32px;
+    height: 32px;
+    filter: brightness(0) invert(1);
+}
+
+.topbar-title {
+    flex: 1;
+}
+
+.topbar-title-text {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #fffefc;
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.topbar-actions .btn-link {
+    color: #333;
+    font-size: 1.25rem;
+}
+
+.topbar-actions .btn-link:hover {
+    color: #7c3aed;
+}
+
+
+/* Other styles */
 .bg-tags {
-    background-color: #7044c9 !important;
+    background-color: #7c3aed !important;
 }
 
 .text-title {
-    color: #7044c9 !important;
+    color: #7c3aed !important;
 }
 
 .text-subtitle {
-    color: #9a7cd9 !important;
+    color: #a855f7 !important;
 }
 
 /* Override Bootstrap default colors */
 .btn-primary {
-    --bs-btn-bg: #5824c0;
-    --bs-btn-border-color: #5824c0;
-    --bs-btn-hover-bg: #4a1fa3;
-    --bs-btn-hover-border-color: #4a1fa3;
-    --bs-btn-active-bg: #4a1fa3;
-    --bs-btn-active-border-color: #4a1fa3;
+    --bs-btn-bg: #7c3aed;
+    --bs-btn-border-color: #7c3aed;
+    --bs-btn-hover-bg: #6d28d9;
+    --bs-btn-hover-border-color: #6d28d9;
+    --bs-btn-active-bg: #6d28d9;
+    --bs-btn-active-border-color: #6d28d9;
 }
 
 .btn-secondary {
-    --bs-btn-bg: #a966d9;
-    --bs-btn-border-color: #a966d9;
-    --bs-btn-hover-bg: #9550c7;
-    --bs-btn-hover-border-color: #9550c7;
-    --bs-btn-active-bg: #9550c7;
-    --bs-btn-active-border-color: #9550c7;
+    --bs-btn-bg: #a855f7;
+    --bs-btn-border-color: #a855f7;
+    --bs-btn-hover-bg: #9333ea;
+    --bs-btn-hover-border-color: #9333ea;
+    --bs-btn-active-bg: #9333ea;
+    --bs-btn-active-border-color: #9333ea;
 }
 
 .btn-info {
-    --bs-btn-bg: #6674c3;
-    --bs-btn-border-color: #6674c3;
-    --bs-btn-hover-bg: #5562a8;
-    --bs-btn-hover-border-color: #5562a8;
-    --bs-btn-active-bg: #5562a8;
-    --bs-btn-active-border-color: #5562a8;
+    --bs-btn-bg: #3b82f6;
+    --bs-btn-border-color: #3b82f6;
+    --bs-btn-hover-bg: #2563eb;
+    --bs-btn-hover-border-color: #2563eb;
+    --bs-btn-active-bg: #2563eb;
+    --bs-btn-active-border-color: #2563eb;
 }
 
 .btn-success {
@@ -84,22 +279,22 @@
 
 .text-info {
     --bs-text-opacity: 1;
-    color: #6674c3 !important;
+    color: #3b82f6 !important;
 }
 
 .bg-primary {
     --bs-bg-opacity: 1;
-    background-color: rgba(88, 36, 192, var(--bs-bg-opacity)) !important;
+    background-color: rgba(124, 58, 237, var(--bs-bg-opacity)) !important;
 }
 
 .bg-secondary {
     --bs-bg-opacity: 1;
-    background-color: rgba(169, 102, 217, var(--bs-bg-opacity)) !important;
+    background-color: rgba(168, 85, 247, var(--bs-bg-opacity)) !important;
 }
 
 .bg-info {
     --bs-bg-opacity: 1;
-    background-color: rgba(102, 116, 195, var(--bs-bg-opacity)) !important;
+    background-color: rgba(59, 130, 246, var(--bs-bg-opacity)) !important;
 }
 
 .bg-success {

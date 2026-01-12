@@ -1,0 +1,26 @@
+{{- /*
+Renders a top bar with page title and theme toggle.
+
+@context {page} The current page.
+*/}}
+
+{{- $capybaraIcon := resources.Get "capybara/capy-icon.svg" }}
+<header class="topbar noprint">
+    <div class="topbar-content">
+        <div class="topbar-left">
+            {{- if $capybaraIcon }}
+            <div class="topbar-icon">
+                <img src="{{ $capybaraIcon.RelPermalink }}" alt="Capybara icon" class="capybara-icon">
+            </div>
+            {{- end }}
+            <div class="topbar-title">
+                <h1 class="topbar-title-text">{{ .Title | default site.Title }}</h1>
+            </div>
+        </div>
+        <div class="topbar-actions">
+            <button id="theme" class="btn btn-link text-light p-0 border-0" type="button" aria-label="Toggle theme">
+                <i class="fa-solid fa-moon" id="theme-icon"></i>
+            </button>
+        </div>
+    </div>
+</header>

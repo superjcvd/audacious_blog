@@ -8,7 +8,6 @@
 {{- $skills := .Params.Skills | default dict }}
 {{- $experience := .Params.Experience | default slice }}
 {{- $education := .Params.Education | default slice }}
-{{- $languages := .Params.Languages | default slice }}
 {{- $interests := .Params.Interests | default slice }}
 {{- $image := "" }}
 {{- if $photo }}
@@ -79,26 +78,13 @@
     <div class="pb-4">
       <h3 class="text-title">Education</h3>
       <div class="border-top pb-2"></div>
-      <div>
+      <div class="row">
         {{ range $education }}
-        <div class="mb-3">
+        <div class="col-md-6 mb-3">
           <h5 class="text-subtitle pt-3">{{ .Place }}</h5>
           <h6 class="text-info">{{ .Date }}</h6>
           <h6>{{ .Course }}</h6>
         </div>
-        {{ end }}
-      </div>
-    </div>
-    {{- end }}
-
-    <!-- Languages -->
-    {{- if $languages }}
-    <div class="pb-4">
-      <h3 class="text-title">Languages</h3>
-      <div class="border-top pb-2"></div>
-      <div>
-        {{ range $languages }}
-        <p><strong>{{ .Name }}</strong>: {{ .Level }}</p>
         {{ end }}
       </div>
     </div>
@@ -109,17 +95,13 @@
     <div class="">
       <h3 class="text-title pt-4">Interests</h3>
       <div class="border-top pb-2"></div>
-      <div class="p-3">
-        <table class="table table-sm table-borderless">
-          <tbody>
-            {{ range $interests }}
-            <tr>
-              <td class="text-subtitle"><i class="fa-solid fa-{{ .Icon }}"></i></td>
-              <td class="w-100">{{ .Name }}</td>
-            </tr>
-            {{ end }}
-          </tbody>
-        </table>
+      <div>
+        {{ range $interests }}
+        <div class="mb-2">
+          <i class="fa-solid fa-{{ .Icon }} text-subtitle me-2"></i>
+          <span>{{ .Name }}</span>
+        </div>
+        {{ end }}
       </div>
     </div>
     {{- end }}
@@ -135,25 +117,19 @@
     {{- end }}
     {{- if $contact }}
     <div class="">
-      <table class="table table-sm table-borderless">
-        <tbody>
-          {{ range $contact }}
-          <tr>
-            <td class="text-title"><i class="fa-solid fa-{{ .Icon }}"></i></td>
-            <td class="text-subtitle">{{ .Key }}: </td>
-            <td class="">
-              {{ if eq .Key "LinkedIn" }}
-              <a href="{{ .Value }}" target="_blank" rel="noopener noreferrer">{{ .Value }}</a>
-              {{ else if eq .Key "Email" }}
-              <a href="mailto:{{ .Value }}">{{ .Value }}</a>
-              {{ else }}
-              {{ .Value }}
-              {{ end }}
-            </td>
-          </tr>
-          {{ end }}
-        </tbody>
-      </table>
+      {{ range $contact }}
+      <div class="mb-2">
+        <i class="fa-solid fa-{{ .Icon }} text-subtitle me-2"></i>
+        <span class="text-subtitle">{{ .Key }}: </span>
+        {{ if eq .Key "LinkedIn" }}
+        <a href="{{ .Value }}" target="_blank" rel="noopener noreferrer">{{ .Value }}</a>
+        {{ else if eq .Key "Email" }}
+        <a href="mailto:{{ .Value }}">{{ .Value }}</a>
+        {{ else }}
+        <span>{{ .Value }}</span>
+        {{ end }}
+      </div>
+      {{ end }}
     </div>
     {{- end }}
 
@@ -162,7 +138,7 @@
       <h3 class="text-title pt-5">Skills</h3>
       <div class="border-top pb-2"></div>
       {{ range $key, $value := $skills }}
-      <h5 class="text-subtitle pt-4 pb-2">{{ $key }}</h5>
+      <h5 class="text-subtitle pt-4 pb-2">{{ $key | title }}</h5>
       {{ range $value }}
       <div class="btn btn-primary bg-gradient btn-sm my-1">{{ . }}</div>
       {{ end }}

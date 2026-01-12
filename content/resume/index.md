@@ -32,6 +32,7 @@ Profile = [
 ]
 
 [Skills]
+Languages = ['English', 'French']
 Cybersecurity = ['SOC2', 'GDPR', 'Governance', 'Awareness', 'Authentication', 'Access Control', 'Forensic', 'Pentesting', 'Networking Security', 'Linux']
 Vendors = ['AWS', 'Azure', 'GCP', 'Linux', 'Checkpoint', 'Palo Alto', 'Juniper', 'Fortinet', 'CISCO']
 Programming = ['Python', 'ReactJS', 'Shell', 'Golang (beginner)']
@@ -92,9 +93,7 @@ Country = 'France'
 City = 'Paris'
 Date = '2012'
 Position = 'Network & Security Engineer'
-Detail = '''- Network and Security projects.
-- Data-center migration.
-- Level 3 support.'''
+Detail = '''L'Oreal data-center migration and Level 3 support.'''
 
 [[Experience]]
 Employer = 'NTT Security'

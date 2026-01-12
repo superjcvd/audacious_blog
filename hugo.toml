@@ -6,3 +6,26 @@ theme = "audacious"
 [markup]
   [markup.highlight]
     style="solarized-dark256"
+
+# Menu configuration - all menu entries defined here
+[[menus.main]]
+name = 'Home'
+pageRef = '/'
+weight = 10
+[menus.main.params]
+icon = 'house'
+
+[[menus.main]]
+name = 'Resume'
+pageRef = '/resume'
+weight = 20
+[menus.main.params]
+icon = 'user'
+
+[[menus.main]]
+name = 'Posts'
+pageRef = '/posts'
+weight = 30
+[menus.main.params]
+icon = 'book'
+

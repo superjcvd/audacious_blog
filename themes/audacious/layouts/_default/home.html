@@ -1,49 +1,30 @@
 {{ define "main" }}
 <div class="home-page">
-    <!-- Hero Section -->
-    <div class="text-center mb-5 pb-1">
-        <h1 class="display-4 text-title mb-1">{{ .Title }}</h1>
-    </div>
-
-    <!-- Main Content -->
     <div class="row">
-        <div class="col-lg-8 mx-auto">
-            {{ .Content }}
+        <!-- Main Content - Left Column -->
+        <div class="col-lg-8 col-md-12">
+            <!-- Main Content -->
+            <div class="pb-4">
+                {{ .Content }}
+            </div>
         </div>
-    </div>
 
-    <!-- Quick Links -->
-    <div class="row mt-5">
-        <div class="col-md-4 mb-3">
-            <div class="card h-100 text-center">
-                <div class="card-body">
-                    <i class="fa-solid fa-book fa-3x text-primary mb-3"></i>
-                    <h5 class="card-title">Cheatsheets</h5>
-                    <p class="card-text text-muted">Common security tools and protocols</p>
-                    <a href="/posts/" class="btn btn-primary btn-sm">Browse Articles</a>
-                </div>
+        <!-- Sidebar - Right Column -->
+        <div class="col-lg-4 col-md-12">
+            {{- $capybaraImage := resources.Get "capybara/capy-super.png" }}
+            {{- if $capybaraImage }}
+            <div class="py-3 text-center">
+                <img class="img-responsive rounded img-fluid" src="{{ $capybaraImage.RelPermalink }}"
+                    style="max-width: 256px; width: 100%;" alt="Capybara mascot">
             </div>
-        </div>
-        <div class="col-md-4 mb-3">
-            <div class="card h-100 text-center">
-                <div class="card-body">
-                    <i class="fa-solid fa-shield-halved fa-3x text-success mb-3"></i>
-                    <h5 class="card-title">Security Tips</h5>
-                    <p class="card-text text-muted">Practical advice to improve your security posture</p>
-                    <a href="/posts/" class="btn btn-success btn-sm">Learn More</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mb-3">
-            <div class="card h-100 text-center">
-                <div class="card-body">
-                    <i class="fa-solid fa-user-tie fa-3x text-info mb-3"></i>
-                    <h5 class="card-title">About</h5>
-                    <p class="card-text text-muted">Learn more about my background and experience</p>
-                    <a href="/resume/" class="btn btn-info btn-sm">View Resume</a>
-                </div>
+            {{- end }}
+            <div class="pb-4">
+                <h3 class="text-title">About</h3>
+                <div class="border-top pb-2"></div>
+                <a href="/resume/" class="btn btn-primary btn-sm">View Resume</a>
             </div>
         </div>
     </div>
+</div>
 </div>
 {{ end }}
