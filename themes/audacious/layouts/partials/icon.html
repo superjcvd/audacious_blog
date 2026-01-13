@@ -1,0 +1,29 @@
+{{- /*
+Renders an icon from local SVG files.
+
+@context {string} name The icon name (without .svg extension).
+@context {string} class Optional CSS classes to apply to the icon wrapper.
+
+@example: {{ partial "icon.html" (dict "name" "house-fill") }}
+@example: {{ partial "icon.html" (dict "name" "house-fill" "class" "text-subtitle me-2") }}
+*/}}
+
+{{- $iconName := .name }}
+{{- $iconClass := .class | default "" }}
+{{- $iconPath := printf "icons/%s.svg" $iconName }}
+{{- $icon := resources.Get $iconPath }}
+{{- if $icon }}
+<span class="{{ $iconClass }}" style="display: inline-flex; align-items: center;">{{ $icon.Content | safeHTML }}</span>
+{{- else }}
+{{- $fallbackIcon := resources.Get "icons/capy-icon.svg" }}
+{{- if $fallbackIcon }}
+<span class="{{ $iconClass }}" style="display: inline-flex; align-items: center;">{{ $fallbackIcon.Content | safeHTML
+    }}</span>
+{{- else }}
+<span class="{{ $iconClass }}" style="display: inline-flex; align-items: center;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <circle cx="8" cy="8" r="4" />
+    </svg>
+</span>
+{{- end }}
+{{- end }}

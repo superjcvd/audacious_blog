@@ -4,21 +4,21 @@ Renders a top bar with page title and theme toggle.
 @context {page} The current page.
 */}}
 
-{{- $capybaraIcon := resources.Get "capybara/capy-icon.svg" }}
 <header class="topbar noprint">
     <div class="topbar-content">
-        {{- if $capybaraIcon }}
         <button id="sidebar-toggle" class="topbar-icon btn btn-link p-0 border-0" type="button"
             aria-label="Toggle sidebar menu">
-            <img src="{{ $capybaraIcon.RelPermalink }}" alt="Capybara icon" class="capybara-icon">
+            {{ partial "icon.html" (dict "name" "capy-icon") }}
         </button>
-        {{- end }}
         <div class="topbar-title">
             <h1 class="topbar-title-text">{{ .Title | default site.Title }}</h1>
         </div>
         <div class="topbar-actions">
             <button id="theme" class="btn btn-link text-light p-0 border-0" type="button" aria-label="Toggle theme">
-                <i class="fa-solid fa-moon" id="theme-icon"></i>
+                <span id="theme-icon-moon" class="theme-icon">{{ partial "icon.html" (dict "name" "moon-stars-fill")
+                    }}</span>
+                <span id="theme-icon-sun" class="theme-icon" style="display: none;">{{ partial "icon.html" (dict "name"
+                    "sun-fill") }}</span>
             </button>
         </div>
     </div>

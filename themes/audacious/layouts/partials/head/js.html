@@ -3,16 +3,12 @@
   integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 <!-- Font Awesome 7 Kit -->
-<script src="https://kit.fontawesome.com/411f0e4e87.js" crossorigin="anonymous"></script>
+<!-- <script src="https://kit.fontawesome.com/411f0e4e87.js" crossorigin="anonymous"></script> -->
 
 <!-- Theme JS -->
-{{- $opts := dict "minify" true }}
-{{ $theme_dev := resources.Get "js/theme.js" | js.Build }}
-{{ $theme_prod := resources.Get "js/theme.js" | js.Build $opts | fingerprint }}
-
-{{- if eq hugo.Environment "development" }}
-<script src="{{ $theme_dev.RelPermalink }}"></script>
-{{- else }}
-<script src="{{ $theme_prod.RelPermalink }}" integrity="{{ $theme_prod.Data.Integrity }}"
-  crossorigin="anonymous"></script>
+{{- $themeJS := resources.Get "js/theme.js" | js.Build }}
+{{- if ne hugo.Environment "development" }}
+{{- $themeJS = $themeJS | minify | fingerprint }}
 {{- end }}
+<script src="{{ $themeJS.RelPermalink }}" {{ if ne hugo.Environment "development" }}
+  integrity="{{ $themeJS.Data.Integrity }}" crossorigin="anonymous" {{ end }}></script>

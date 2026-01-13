@@ -1,17 +1,18 @@
 {{ define "main" }}
-    <h1>{{ .Title }}</h1>
-    {{ .Content }}
-    <div class="row row-cols-3">
+{{ .Content }}
+<div class="row row-cols-2">
     {{ range .Pages }}
-        <div class="col my-3">
-            <div class="card h-100">
-                <div class="card-header"><h3>{{ .LinkTitle }}</h3></div>
-                <div class="card-body">{{ .Summary }}</div>
-                <div class="card-footer">
-                    <a href="{{ .RelPermalink }}" class="btn btn-tags btn-sm">View</a>
-                </div>
+    <div class="col my-3">
+        <div class="card h-100">
+            <div class="card-header">
+                <h3>{{ .LinkTitle }}</h3>
+            </div>
+            <div class="card-body">{{ .Summary }}</div>
+            <div class="card-footer">
+                <a href="{{ .RelPermalink }}" class="btn btn-tags btn-sm">View</a>
             </div>
         </div>
-    {{ end }}
     </div>
+    {{ end }}
+</div>
 {{ end }}

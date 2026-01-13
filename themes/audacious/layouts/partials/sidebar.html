@@ -20,9 +20,7 @@ Only supports parent-level menu items (no nested menus).
             <li class="sidebar-item {{ if $isActive }}active{{ end }}">
                 <a href="{{ .URL }}" class="sidebar-link" {{ if $isActive }}aria-current="page" {{ end }}>
                     {{- if .Params.icon }}
-                    <i class="fa-solid fa-{{ .Params.icon }}"></i>
-                    {{- else }}
-                    <i class="fa-solid fa-circle"></i>
+                    {{ partial "icon.html" (dict "name" .Params.icon) }}
                     {{- end }}
                     <span class="sidebar-text">{{ .Name }}</span>
                 </a>

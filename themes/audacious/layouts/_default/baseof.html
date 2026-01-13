@@ -9,8 +9,8 @@
 <body class="overflow-y-scroll">
   {{ partial "sidebar.html" (dict "menuID" "main" "page" .) }}
   {{ partial "topbar.html" . }}
-  <div class="content-wrapper">
-    <main class="container">{{ block "main" . }}{{ end }}</main>
+  <div class="container">
+    <main>{{ block "main" . }}{{ end }}</main>
     <footer>{{ partial "footer.html" . }}</footer>
   </div>
 </body>

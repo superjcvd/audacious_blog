@@ -13,19 +13,19 @@ name = 'Home'
 pageRef = '/'
 weight = 10
 [menus.main.params]
-icon = 'house'
+icon = 'house-fill'
 
 [[menus.main]]
 name = 'Resume'
 pageRef = '/resume'
 weight = 20
 [menus.main.params]
-icon = 'user'
+icon = 'person-vcard-fill'
 
 [[menus.main]]
 name = 'Posts'
 pageRef = '/posts'
 weight = 30
 [menus.main.params]
-icon = 'book'
+icon = 'file-earmark-fill'
 

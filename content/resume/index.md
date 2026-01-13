@@ -11,23 +11,23 @@ Photo = 'images/gael.png'
 
 
 [[Contact]]
-Icon = 'phone'
+Icon = 'telephone-fill'
 Key = 'Phone'
 Value = '+33 06 27 51 67 31'
 
 [[Contact]]
-Icon = 'envelope'
+Icon = 'envelope-open-fill'
 Key = 'Email'
 Value = 'gael.soude@gmail.com'
 
 [[Contact]]
-Icon = 'link'
+Icon = 'linkedin'
 Key = 'LinkedIn'
 Value = 'https://www.linkedin.com/in/gael-soude/'
 DisplayLink = '/gael-soude/'
 
 [[Contact]]
-Icon = 'location-dot'
+Icon = 'globe-americas-fill'
 Key = 'Location'
 Value = 'Frontignan, Occitanie, France'
 
@@ -129,7 +129,7 @@ Level = 'C1'
 
 [[Interests]]
 Name = 'Crossfit'
-Icon = 'dumbbell'
+Icon = 'person-walking'
 
 [[Interests]]
 Name = 'Swimming'
@@ -137,9 +137,9 @@ Icon = 'person-swimming'
 
 [[Interests]]
 Name = 'Taekwondo'
-Icon = 'hand-fist'
+Icon = 'martial-arts'
 
 [[Interests]]
 Name = 'Technology'
-Icon = 'computer'
+Icon = 'hand-fist'
 +++

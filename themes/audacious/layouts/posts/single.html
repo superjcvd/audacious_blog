@@ -1,11 +1,20 @@
 {{ define "main" }}
-{{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-{{ $dateHuman := .Date | time.Format ":date_long" }}
+<article class="post-single">
+        <header class="post-header mb-4">
+                <h1 class="text-title mb-3">{{ .Title }}</h1>
+                <div class="post-meta text-muted mb-3">
+                        <time datetime="{{ .Date | time.Format " 2006-01-02T15:04:05-07:00" }}">
+                                {{ .Date | time.Format ":date_long" }}
+                        </time>
+                </div>
+        </header>
 
-<h6 class=""><time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></h6>
+        <div class="post-content">
+                {{ .Content }}
+        </div>
 
-<div class="">{{ .Content }}</div>
-
-
-<div class="">{{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}</div>
+        <footer class="post-footer mt-5">
+                {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+        </footer>
+</article>
 {{ end }}

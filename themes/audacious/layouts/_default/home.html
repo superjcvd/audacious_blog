@@ -14,7 +14,7 @@
     </div>
     {{- end }}
 
-    <div class="row">
+    <div class="row mb-4">
         <!-- Main Content - Left Column -->
         <div class="col-lg-8 col-md-12 order-2 order-lg-1">
             <!-- Main Content -->
@@ -27,15 +27,13 @@
         <div class="col-lg-4 col-md-12 order-1 order-lg-2">
             {{- $capybaraImage := resources.Get "capybara/capy-super.png" }}
             {{- if $capybaraImage }}
-            <div class="py-3 text-center">
+            <div class="text-center">
                 <img class="img-responsive rounded img-fluid" src="{{ $capybaraImage.RelPermalink }}"
                     style="max-width: 256px; width: 100%;" alt="Capybara mascot">
             </div>
             {{- end }}
-            <div class="pb-4">
-                <h3 class="text-title">About</h3>
-                <div class="border-top pb-2"></div>
-                <a href="/resume/" class="btn btn-primary btn-sm">View Resume</a>
+            <div class="text-center">
+                <a href="/resume/" class="btn btn-primary btn-lg">View Resume</a>
             </div>
         </div>
     </div>

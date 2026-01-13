@@ -4,12 +4,15 @@
   document.documentElement.setAttribute("data-bs-theme", savedTheme);
 
   function updateThemeIcon(theme) {
-    const themeIcon = document.getElementById("theme-icon");
-    if (themeIcon) {
+    const moonIcon = document.getElementById("theme-icon-moon");
+    const sunIcon = document.getElementById("theme-icon-sun");
+    if (moonIcon && sunIcon) {
       if (theme === "dark") {
-        themeIcon.className = "fa-solid fa-moon";
+        moonIcon.style.display = "";
+        sunIcon.style.display = "none";
       } else {
-        themeIcon.className = "fa-solid fa-sun";
+        moonIcon.style.display = "none";
+        sunIcon.style.display = "";
       }
     }
   }

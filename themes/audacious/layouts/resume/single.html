@@ -96,13 +96,13 @@
 
     <!-- Interests -->
     {{- if $interests }}
-    <div class="">
-      <h3 class="text-title pt-4">Interests</h3>
+    <div class="pb-4 resume-interests">
+      <h3 class="text-title">Interests</h3>
       <div class="border-top pb-2"></div>
-      <div>
+      <div class="row">
         {{ range $interests }}
-        <div class="mb-2">
-          <i class="fa-solid fa-{{ .Icon }} text-subtitle me-2"></i>
+        <div class="col-md-6 mb-3">
+          {{ partial "icon.html" (dict "name" .Icon "class" "text-subtitle me-2") }}
           <span>{{ .Name }}</span>
         </div>
         {{ end }}
@@ -120,10 +120,10 @@
     </div>
     {{- end }}
     {{- if $contact }}
-    <div class="">
+    <div class="resume-contact">
       {{ range $contact }}
       <div class="mb-2">
-        <i class="fa-solid fa-{{ .Icon }} text-subtitle me-2"></i>
+        {{ partial "icon.html" (dict "name" .Icon "class" "text-subtitle me-2") }}
         <span class="text-subtitle">{{ .Key }}: </span>
         {{ if eq .Key "LinkedIn" }}
         <a href="{{ .Value }}" target="_blank" rel="noopener noreferrer">{{ .DisplayLink }}</a>
