@@ -8,6 +8,7 @@
 {{- $profile := .Params.Profile | default slice }}
 {{- $skills := .Params.Skills | default dict }}
 {{- $experience := .Params.Experience | default slice }}
+{{- $personalProjects := .Params.PersonalProjects | default slice }}
 {{- $education := .Params.Education | default slice }}
 {{- $interests := .Params.Interests | default slice }}
 {{- $image := "" }}
@@ -23,16 +24,24 @@
 
   <!-- Name and title -->
   <div class="pb-4">
-    <h1 class="text-title mb-3">{{ $name }}</h1>
-    {{- if $jobTitle }}
-    <p class="lead">{{ $jobTitle }}</p>
-    {{- end }}
-    {{- if $introduction }}
-    <p class="text">{{ $introduction | replaceRE "\n" "<br>" | safeHTML }}</p>
-    {{- end }}
+    <div class="d-flex justify-content-between align-items-start mb-3">
+      <div>
+        <h1 class="text-title mb-3">{{ $name }}</h1>
+        {{- if $jobTitle }}
+        <p class="lead">{{ $jobTitle }}</p>
+        {{- end }}
+        {{- if $introduction }}
+        <p class="text">{{ $introduction | replaceRE "\n" "<br>" | safeHTML }}</p>
+        {{- end }}
+      </div>
+      <button id="export-pdf" class="btn btn-primary noprint" type="button" aria-label="Export resume as PDF">
+        Export PDF
+      </button>
+    </div>
   </div>
 
   <div class="col-lg-8 col-md-12 order-2 order-lg-1">
+
     <!-- Profile -->
     {{- if $profile }}
     <div class="pb-4">
@@ -45,6 +54,8 @@
       </div>
     </div>
     {{- end }}
+
+    <div class="pagebreak"></div>
 
     <!-- Experience -->
     {{- if $experience }}
@@ -74,8 +85,30 @@
     </div>
     {{- end }}
 
-    <!-- New page break for PDF export -->
-    <!-- <div class="pagebreak"></div> -->
+
+    <!-- Personal Projects -->
+    {{- if $personalProjects }}
+    <div class="pb-4">
+      <h3 class="text-title">Personal Projects</h3>
+      <div class="border-top pb-2"></div>
+      <div>
+        {{ range $personalProjects }}
+        <div class="mb-4">
+          <h5 class="text-subtitle">
+            {{ .Name }}
+          </h5>
+          <h6 class="text-info">{{ .Date }}</h6>
+          {{- if .Description }}
+          <p class="mb-0">{{ .Description }}</p>
+          {{- end }}
+          {{- if .Link }}
+          <a href="{{ .Link }}" target="_blank" rel="noopener noreferrer">{{ .Name }}</a>
+          {{- end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+    {{- end }}
 
     <!-- Education -->
     {{- if $education }}
@@ -137,6 +170,8 @@
     </div>
     {{- end }}
 
+    <div class="pagebreak"></div>
+
     {{- if $skills }}
     <div class="">
       <h3 class="text-title pt-5">Skills</h3>
@@ -153,4 +188,16 @@
 
 </div>
 {{- end }}
+
+<script>
+  // PDF Export functionality
+  (function () {
+    const exportButton = document.getElementById('export-pdf');
+    if (exportButton) {
+      exportButton.addEventListener('click', function () {
+        window.print();
+      });
+    }
+  })();
+</script>
 {{ end }}
