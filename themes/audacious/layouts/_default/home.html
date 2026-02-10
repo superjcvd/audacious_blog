@@ -1,42 +1,13 @@
 {{ define "main" }}
-<div class="home-page">
-    <!-- Header and introduction -->
-    {{- if or .Params.header .Params.summary }}
-    <div class="row mb-4">
-        <div class="col-12">
-            {{- if .Params.header }}
-            <h1 class="text-title mb-3">{{ .Params.header }}</h1>
-            {{- end }}
-            {{- if .Params.summary }}
-            <p class="lead">{{ .Params.summary }}</p>
-            {{- end }}
-        </div>
-    </div>
-    {{- end }}
+<article class="post-single">
+    <header class="post-header mb-4">
+        {{- with .Param "header" }}
+        <h1 class="text-title mb-3">{{ . }}</h1>
+        {{- end }}
+    </header>
 
-    <div class="row mb-4">
-        <!-- Main Content - Left Column -->
-        <div class="col-lg-8 col-md-12 order-2 order-lg-1">
-            <!-- Main Content -->
-            <div class="pb-4">
-                {{ .Content }}
-            </div>
-        </div>
-
-        <!-- Sidebar - Right Column -->
-        <div class="col-lg-4 col-md-12 order-1 order-lg-2">
-            {{- $capybaraImage := resources.Get "capybara/capy-super.png" }}
-            {{- if $capybaraImage }}
-            <div class="text-center">
-                <img class="img-responsive rounded img-fluid" src="{{ $capybaraImage.RelPermalink }}"
-                    style="max-width: 256px; width: 100%;" alt="Capybara mascot">
-            </div>
-            {{- end }}
-            <div class="text-center">
-                <a href="/resume/" class="btn btn-primary btn-lg">View Resume</a>
-            </div>
-        </div>
+    <div class="post-content">
+        {{ .Content }}
     </div>
-</div>
-</div>
+</article>
 {{ end }}

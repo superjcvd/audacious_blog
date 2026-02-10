@@ -42,12 +42,12 @@ footer {
 /* Sidebar styles */
 .sidebar {
     width: var(--sidebar-width);
-    background-color: rgba(124, 58, 237, 0.65);
+    background-color: rgba(124, 58, 237, 0.75);
     /* background-color: rgba(42, 171, 122, 0.638); */
     position: fixed;
     left: 0;
     top: var(--topbar-height);
-    height: 100vh;
+    height: calc(100vh - var(--topbar-height));
     z-index: 1000;
     display: flex;
     flex-direction: column;
@@ -117,6 +117,21 @@ footer {
     opacity: 1;
 }
 
+.sidebar-footer {
+    margin-top: auto;
+    padding: 1rem 1rem 1.5rem;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.sidebar-footer .sidebar-capy {
+    max-width: 100%;
+    width: 140px;
+    height: auto;
+    object-fit: contain;
+}
 
 
 .topbar {
@@ -131,7 +146,7 @@ footer {
     right: 0;
     width: 100%;
     z-index: 1001;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 .topbar-content {
@@ -324,9 +339,66 @@ footer {
     font-weight: 600;
 }
 
+.post-toc {
+    font-size: 0.95rem;
+}
+.post-toc ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.post-toc li {
+    margin-bottom: 0.35rem;
+}
+.post-toc a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+}
+.post-toc a:hover {
+    color: #a855f7;
+}
+
 .post-footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 1.5rem;
+}
+
+/* Post list cards (match site colors) */
+.row-cols-2 .card {
+    background-color: rgba(124, 58, 237, 0.12);
+    border: 1px solid rgba(124, 58, 237, 0.35);
+    border-radius: 0.5rem;
+}
+.row-cols-2 .card-header {
+    background-color: rgba(124, 58, 237, 0.45);
+    border-bottom: 1px solid rgba(124, 58, 237, 0.35);
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 600;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+.row-cols-2 .card-header h3 {
+    margin: 0;
+    font-size: 1.35rem;
+    color: inherit;
+}
+.row-cols-2 .card-body {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+}
+.row-cols-2 .card-footer {
+    background-color: rgba(124, 58, 237, 0.2);
+    border-top: 1px solid rgba(124, 58, 237, 0.35);
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+.btn-tags {
+    --bs-btn-bg: #7c3aed;
+    --bs-btn-border-color: #7c3aed;
+    --bs-btn-color: #fff;
+    --bs-btn-hover-bg: #6d28d9;
+    --bs-btn-hover-border-color: #6d28d9;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-active-bg: #a855f7;
+    --bs-btn-active-border-color: #a855f7;
 }
 
 /* Bootstrap button color overrides */

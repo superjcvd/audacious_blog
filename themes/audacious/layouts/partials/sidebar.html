@@ -29,4 +29,16 @@ Only supports parent-level menu items (no nested menus).
             {{- end }}
         </ul>
     </nav>
+    <div class="sidebar-footer">
+        {{- $menu := index site.Menus $menuID }}
+        {{- range $menu }}
+            {{- if $page.IsMenuCurrent .Menu . }}
+                {{- $img := .Params.image | default site.Params.sidebarDefaultImage }}
+                {{- if $img }}
+        <img src="{{ $img }}" alt="" class="sidebar-capy" />
+                {{- end }}
+                {{- break }}
+            {{- end }}
+        {{- end }}
+    </div>
 </aside>

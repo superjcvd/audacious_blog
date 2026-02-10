@@ -3,6 +3,9 @@ languageCode = 'en-us'
 title = 'Audacious Blog'
 theme = "audacious"
 
+[params]
+sidebarDefaultImage = '/images/capy-key.png'
+
 [markup]
   [markup.highlight]
     style="solarized-dark256"
@@ -14,6 +17,15 @@ pageRef = '/'
 weight = 10
 [menus.main.params]
 icon = 'house-fill'
+image = '/images/capy-super.png'
+
+[[menus.main]]
+name = 'MFA'
+pageRef = '/posts/what_is_mfa/'
+weight = 20
+[menus.main.params]
+icon = 'key-fill'
+image = '/images/capy-key.png'
 
 [[menus.main]]
 name = 'Resume'
@@ -21,6 +33,7 @@ pageRef = '/resume'
 weight = 20
 [menus.main.params]
 icon = 'person-vcard-fill'
+image = '/images/capy-hacker.png'
 
 [[menus.main]]
 name = 'Posts'
@@ -28,4 +41,5 @@ pageRef = '/posts'
 weight = 30
 [menus.main.params]
 icon = 'file-earmark-fill'
+image = '/images/capy-book.png'
 
