@@ -1,6 +1,11 @@
 /* Consistent base so rem sizes don't vary by page */
 html {
     font-size: 16px;
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
 }
 
 /* Custom Bootstrap theme colors */
