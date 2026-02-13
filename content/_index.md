@@ -1,6 +1,6 @@
 +++
 title = 'CapySecurity'
-header = "Cybersecurity for everybody"
+header = "Cybersecurity"
 summary = "Cybersecurity blog dedicated to making security accessible to everyone"
 +++
 
@@ -10,7 +10,7 @@ summary = "Cybersecurity blog dedicated to making security accessible to everyon
 - **Technical Articles** - In-depth guides and practical tutorials for security professionals
 - **Best Practices** - Real-world security advice and lessons learned
 
-![Capybara in a zen garden, calm and contemplative](/images/capy-wise.png)
+![Capybara in a zen garden, calm and contemplative](images/capy-wise.png)
 
 The capybara’s presence is symbolic—representing peace, resilience, and harmony with others.
 The capybara remains consistently calm and accepting, embodying a quiet wisdom.

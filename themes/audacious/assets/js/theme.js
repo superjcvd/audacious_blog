@@ -76,14 +76,26 @@
     });
   }
 
+  // Export as PDF (print dialog; user can save as PDF)
+  function initExportPdf() {
+    const exportButton = document.getElementById('export-pdf');
+    if (exportButton) {
+      exportButton.addEventListener('click', () => {
+        window.print();
+      });
+    }
+  }
+
   // Initialize when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       initThemeSwitcher();
       initSidebarToggle();
+      initExportPdf();
     });
   } else {
     initThemeSwitcher();
     initSidebarToggle();
+    initExportPdf();
   }
 })();

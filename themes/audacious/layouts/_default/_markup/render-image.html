@@ -1,0 +1,51 @@
+{{/*
+  Responsive images: use page-bundle images (relative path) for resizing.
+  Fallback: absolute paths (e.g. /images/…) render as normal img (no resize).
+
+  Where to put images:
+  - Page bundle: same folder as the content file (e.g. content/posts/my-post/images/photo.jpg).
+    In markdown use relative path: ![alt](images/photo.jpg)
+  - Home page: content/images/photo.jpg, reference as ![alt](images/photo.jpg)
+  - static/: use /images/photo.jpg in markdown; works but no responsive resizing.
+*/}}
+{{ $src := .Page.Resources.GetMatch (printf "%s" (.Destination | safeURL)) }}
+{{ $alt := .PlainText | safeHTML }}
+{{ $dest := .Destination | safeURL }}
+
+{{ if $src }}
+  {{ $tinyw := default "500x webp" }}
+  {{ $smallw := default "800x webp" }}
+  {{ $mediumw := default "1200x webp" }}
+  {{ $largew := default "1500x webp" }}
+
+  {{ $data := newScratch }}
+  {{ $data.Set "tiny" ($src.Resize $tinyw) }}
+  {{ $data.Set "small" ($src.Resize $smallw) }}
+  {{ $data.Set "medium" ($src.Resize $mediumw) }}
+  {{ $data.Set "large" ($src.Resize $largew) }}
+
+  {{ $tiny := $data.Get "tiny" }}
+  {{ $small := $data.Get "small" }}
+  {{ $medium := $data.Get "medium" }}
+  {{ $large := $data.Get "large" }}
+
+  <a href="{{ $src.RelPermalink }}">
+    <picture>
+      <source media="(max-width: 376px)" srcset="{{ $tiny.RelPermalink }}">
+      <source media="(max-width: 992px)" srcset="{{ $small.RelPermalink }}">
+      <source media="(max-width: 1400px)" srcset="{{ $medium.RelPermalink }}">
+      <source media="(min-width: 1600px)" srcset="{{ $large.RelPermalink }}">
+      <img
+        alt="{{ $alt }}"
+        title="{{ $alt }}"
+        src="{{ $src.RelPermalink }}"
+        width="{{ $src.Width }}"
+        height="{{ $src.Height }}"
+        class="img-fluid"
+      >
+    </picture>
+  </a>
+{{ else }}
+  {{/* Fallback for static/ or external URLs: normal img, no resize */}}
+  <img src="{{ $dest }}" alt="{{ $alt }}" title="{{ $alt }}" class="img-fluid" loading="lazy">
+{{ end }}

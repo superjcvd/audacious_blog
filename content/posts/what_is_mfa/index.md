@@ -1,5 +1,5 @@
 +++
-title = 'Multi Factors Authentication'
+title = 'MFA'
 date = 2024-12-19T10:00:00-07:00
 draft = false
 tags = ['security', 'authentication', 'mfa']
@@ -7,7 +7,9 @@ toc = false
 summary = 'What MFA is, why it matters, and how it works—in plain language.'
 +++
 
-What is Multi-Factor Authentication, and how it works.
+# Multi-Factor Authentication
+
+---
 
 ## What is Authentication?
 
@@ -54,7 +56,7 @@ This is a unique physical characteristic of your body. Examples include:
 
 Passwords can be stolen, guessed, or hacked. That's where Multi-Factor Authentication comes in.
 
-![Cat meme: Your password contains my name, right? Not the dog's...](/images/cat_password.jpg)
+![Cat meme: Your password contains my name, right? Not the dog's...](cat_password.jpg)
 
 ### Multi-Factor Authentication definition
 
